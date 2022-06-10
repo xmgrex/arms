@@ -1,5 +1,4 @@
 import 'package:arms/src/features/products/domain/product_option.dart';
-import 'package:arms/src/features/products/presentation/product_screen/prodcut_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../constants/test_products.dart';
 import '../domain/product.dart';
