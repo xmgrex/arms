@@ -10,36 +10,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 import 'package:arms/src/common_widget/common_widget.dart';
 import '../../../cart/presentation/add_to_cart/add_to_cart_widget.dart';
-import '../../domain/product_option.dart';
 import '../../domain/sku.dart';
 import 'product_price.dart';
 
-class ProductScreen extends ConsumerWidget {
+class ProductScreen extends ConsumerStatefulWidget {
   const ProductScreen({
-    Key? key,
-    required this.productId,
-  }) : super(key: key);
-
-  final String productId;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(leading: backPageButton(context: context)),
-      body: AsyncValueWidget<Product?>(
-        value: ref.watch(productProvider(productId)),
-        data: (product) {
-          return product == null
-              ? const Text('Product not found')
-              : ProductDetails(product: product);
-        },
-      ),
-    );
-  }
-}
-
-class ProductDetails extends ConsumerWidget {
-  const ProductDetails({
     Key? key,
     required this.product,
   }) : super(key: key);
@@ -47,7 +22,21 @@ class ProductDetails extends ConsumerWidget {
   final Product product;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends ConsumerState<ProductScreen> {
+
+  @override
+  void initState() {
+    final controller = ref.read(productScreenControllerProvider.notifier);
+    controller.initialOptionValues(widget.product.options);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final skusListValue = ref.watch(skusListFutureProvider(widget.product.id));
     final isLoading = ref.watch(productScreenControllerProvider
         .select((value) => value.value.isLoading));
 
@@ -59,49 +48,50 @@ class ProductDetails extends ConsumerWidget {
         }
       },
     );
-    final skusListValue = ref.watch(skusListFutureProvider(product.id));
-    return AsyncValueWidget<List<SKU>>(
-      value: skusListValue,
-      data: (skusList) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          final controller =
-              ref.watch(productScreenControllerProvider.notifier);
-          controller.setSKUsList(skusList);
-          controller.initialOptionValues(product);
-        });
-        return LoadingOverlay(
-          bgColor: Theme.of(context).colorScheme.outline,
-          isLoading: isLoading,
-          loadingWidget: const LoadingWidget(),
-          child: FadeIn(
-            duration: const Duration(milliseconds: 400),
-            child: Stack(
-              children: [
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    const ProductImages(),
-                    const ProductNameAndDescription(),
-                    const ProductPrice(),
-                    ProductOptions(options: product.options),
-                    gapH64,
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: AddToCartWidget(
-                    addToCart: (quantity) {
-                      final controller =
-                          ref.read(productScreenControllerProvider.notifier);
-                      return controller.addToCart(quantity);
-                    },
+    return Scaffold(
+      appBar: AppBar(leading: backPageButton(context: context)),
+      body: LoadingOverlay(
+        bgColor: Theme.of(context).colorScheme.outline,
+        isLoading: isLoading,
+        loadingWidget: const LoadingWidget(),
+        child: AsyncValueWidget<List<SKU>>(
+          value: skusListValue,
+          data: (skusList) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              final controller =
+                  ref.read(productScreenControllerProvider.notifier);
+              controller.setSKUsList(skusList);
+            });
+            return FadeIn(
+              duration: const Duration(milliseconds: 400),
+              child: Stack(
+                children: [
+                  ListView(
+                    shrinkWrap: true,
+                    children: [
+                      const ProductImages(),
+                      const ProductNameAndDescription(),
+                      const ProductPrice(),
+                      ProductOptions(options: widget.product.options),
+                      gapH64,
+                    ],
                   ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: AddToCartWidget(
+                      addToCart: (quantity) {
+                        final controller =
+                            ref.read(productScreenControllerProvider.notifier);
+                        return controller.addToCart(quantity, widget.product);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

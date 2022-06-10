@@ -41,7 +41,7 @@ class OrderItem {
 
   factory OrderItem.fromCartItem(CartItem cartItem) {
     return OrderItem(
-      productId: cartItem.productId,
+      productId: cartItem.product.id,
       skuId: cartItem.skuId,
       name: cartItem.name,
       caption: cartItem.caption,

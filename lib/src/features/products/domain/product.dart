@@ -33,7 +33,7 @@ class Product {
       'name': name,
       'description': description,
       'imageUrl': imageUrl,
-      'options': options,
+      'options': options.map((e) => e.toMap()).toList(),
     };
   }
 

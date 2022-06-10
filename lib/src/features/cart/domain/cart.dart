@@ -1,3 +1,4 @@
+import 'package:arms/src/features/products/domain/product.dart';
 import 'package:arms/src/features/products/domain/sku.dart';
 import 'package:x_kit/x_kit.dart';
 
@@ -5,7 +6,7 @@ import '../../../constants/types.dart';
 
 class CartItem {
   const CartItem({
-    required this.productId,
+    required this.product,
     required this.skuId,
     required this.name,
     required this.caption,
@@ -21,7 +22,7 @@ class CartItem {
 
   factory CartItem.fromMap(Map<String, dynamic> map) {
     return CartItem(
-      productId: map['productId'] as String,
+      product: Product.fromMap(map['product'] as Map<String, dynamic>),
       skuId: map['skuId'] as String,
       name: map['name'] as String,
       caption: map['caption'] as String,
@@ -36,9 +37,9 @@ class CartItem {
     );
   }
 
-  factory CartItem.fromSKU(SKU sku, int quantity) {
+  factory CartItem.fromSKU(SKU sku, int quantity, Product product) {
     return CartItem(
-      productId: sku.productId,
+      product: product,
       skuId: sku.id,
       name: sku.name,
       caption: sku.caption,
@@ -53,7 +54,7 @@ class CartItem {
     );
   }
 
-  final String productId;
+  final Product product;
   final String skuId;
   final String name;
   final String caption;
@@ -70,7 +71,7 @@ class CartItem {
 
   Map<String, dynamic> toMap() {
     return {
-      'productId': productId,
+      'product': product.toMap(),
       'skuId': skuId,
       'name': name,
       'caption': caption,
@@ -87,7 +88,7 @@ class CartItem {
 
   @override
   String toString() {
-    return 'CartItem{productId: $productId, skuId: $skuId, name: $name, caption: $caption, description: $description, currency: $currency, amount: $amount, quantity: $quantity, discount: ${discount.toString()}, taxRate: $taxRate, inventory: $inventory, imageUrls: $imageUrls}';
+    return 'CartItem{product: ${product.toString()}, skuId: $skuId, name: $name, caption: $caption, description: $description, currency: $currency, amount: $amount, quantity: $quantity, discount: ${discount.toString()}, taxRate: $taxRate, inventory: $inventory, imageUrls: $imageUrls}';
   }
 
   String displayPrice() => symbolFormatter(price.round(), currency);
@@ -120,7 +121,7 @@ class CartItem {
   double get price => amount;
 
   CartItem copyWith({
-    String? productId,
+  Product? product,
     String? skuId,
     String? name,
     String? caption,
@@ -134,7 +135,7 @@ class CartItem {
     List<String>? imageUrls,
   }) {
     return CartItem(
-      productId: productId ?? this.productId,
+      product: product ?? this.product,
       skuId: skuId ?? this.skuId,
       name: name ?? this.name,
       caption: caption ?? this.caption,

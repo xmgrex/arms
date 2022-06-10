@@ -74,10 +74,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
             path: 'productScreen',
             name: AppRoute.productScreen.name,
             pageBuilder: (context, state) {
-              final id = state.extra! as String;
+              final product = state.extra! as Product;
               return MaterialPage(
                 key: state.pageKey,
-                child: ProductScreen(productId: id),
+                child: ProductScreen(product: product),
               );
             },
           ),

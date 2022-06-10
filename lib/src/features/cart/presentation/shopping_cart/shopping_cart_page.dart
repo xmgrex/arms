@@ -47,7 +47,7 @@ class ShoppingCartPage extends ConsumerWidget {
                   ShoppingCartItemsBuilder(
                     items: data,
                     itemBuilder: (_, item, index) {
-                      return ShoppingCartItem(item: item);
+                      return ShoppingCartItem(item: item, );
                     },
                   ),
                   Align(

@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:arms/src/features/products/presentation/product_screen/product_screen_state.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:x_kit/x_kit.dart';
 
 import '../../domain/product_option.dart';
 import '../../domain/product.dart';
@@ -21,12 +22,13 @@ class ProductScreenController extends StateNotifier<ProductScreenState> {
 
   final Reader _read;
 
-  void initialOptionValues(Product product) {
+  void initialOptionValues(List<ProductOption> options) {
     var values = <OptionValue>[];
-    for (var option in product.options) {
+    for (var option in options) {
       values.add(option.values.first);
     }
     state = state.copyWith(selectedOptionValuesList: values);
+    logger.info(state.selectedOptionValuesList.toList());
   }
 
   void selectOptionValue(OptionValue value) {
@@ -40,9 +42,15 @@ class ProductScreenController extends StateNotifier<ProductScreenState> {
     }
     state = state.copyWith(selectedOptionValuesList: newValues);
 
+    final selectedOptionValuesList = state.selectedOptionValuesList.map((e) {
+      return [e.id, e.optionId];
+    }).toList();
     final deepEq = const DeepCollectionEquality().equals;
     for (var sku in state.skusList!) {
-      if (deepEq(sku.optionValues, state.selectedOptionValuesList)) {
+      final optionValues = sku.optionValues.map((e) {
+        return [e.id, e.optionId];
+      }).toList();
+      if (deepEq(optionValues, selectedOptionValuesList)) {
         state = state.copyWith(selectSKU: sku);
       }
     }
@@ -50,10 +58,16 @@ class ProductScreenController extends StateNotifier<ProductScreenState> {
   }
 
   void setSKUsList(List<SKU> skusList) {
-    final selectedOptionValuesList = state.selectedOptionValuesList;
+    final selectedOptionValuesList = state.selectedOptionValuesList.map((e) {
+      return [e.id, e.optionId];
+    }).toList();
     final deepEq = const DeepCollectionEquality().equals;
     for (var sku in skusList) {
-      if (deepEq(sku.optionValues, selectedOptionValuesList)) {
+      final optionValues = sku.optionValues.map((e) {
+        return [e.id, e.optionId];
+      }).toList();
+      logger.info(sku.optionValues.toString());
+      if (deepEq(optionValues, selectedOptionValuesList)) {
         state = state.copyWith(selectSKU: sku);
       }
     }
@@ -70,10 +84,10 @@ class ProductScreenController extends StateNotifier<ProductScreenState> {
     return value;
   }
 
-  Future<void> addToCart(int quantity) async {
+  Future<void> addToCart(int quantity, Product product) async {
     if (state.selectSKU != null && quantity > 0) {
       state = state.copyWith(value: const AsyncValue.loading());
-      final cartItem = CartItem.fromSKU(state.selectSKU!, quantity);
+      final cartItem = CartItem.fromSKU(state.selectSKU!, quantity, product);
       final value = await AsyncValue.guard(() {
         return _read(cartRepositoryProvider).addToCart(cartItem);
       });

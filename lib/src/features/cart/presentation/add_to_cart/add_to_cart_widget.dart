@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
-final _quantityStateProvider = StateProvider<int>((ref) => 1);
 
-class AddToCartWidget extends ConsumerWidget {
+class AddToCartWidget extends StatefulWidget {
   const AddToCartWidget({
     Key? key,
     required this.addToCart,
@@ -14,9 +12,15 @@ class AddToCartWidget extends ConsumerWidget {
   final Function(int) addToCart;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final quantity = ref.watch(_quantityStateProvider.state).state;
+  State createState() => _AddToCartWidgetState();
+}
 
+class _AddToCartWidgetState extends State<AddToCartWidget> {
+
+  var quantity = 1;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(Sizes.p8).copyWith(bottom: Sizes.p32),
       width: double.infinity,
@@ -26,8 +30,20 @@ class AddToCartWidget extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _ItemQuantityButton(
-            decrement: () => decrement(ref),
-            increment: () => increment(ref),
+            decrement: () {
+              if (quantity > 1) {
+                setState(() {
+                  quantity -= 1;
+                });
+                HapticFeedback.mediumImpact();
+              }
+            },
+            increment: () {
+              setState(() {
+                quantity += 1;
+              });
+              HapticFeedback.mediumImpact();
+            },
             quantityString: '$quantity',
           ),
           gapW4,
@@ -37,30 +53,13 @@ class AddToCartWidget extends ConsumerWidget {
               label: 'AddToCart',
               radius: Sizes.p4,
               onPressed: () {
-                addToCart(quantity);
+                widget.addToCart(quantity);
               },
             ),
           ),
         ],
       ),
     );
-  }
-
-  void increment(WidgetRef ref) {
-    ref.read(_quantityStateProvider.state).update((state) {
-      return state = state += 1;
-    });
-    HapticFeedback.mediumImpact();
-  }
-
-  void decrement(WidgetRef ref) {
-    final state = ref.read(_quantityStateProvider.state);
-    if (state.state > 1) {
-      state.update((state) {
-        return state = state -= 1;
-      });
-      HapticFeedback.mediumImpact();
-    }
   }
 }
 

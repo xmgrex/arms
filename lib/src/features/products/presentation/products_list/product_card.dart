@@ -27,7 +27,7 @@ class ProductCard extends ConsumerWidget {
         onTap: () {
           context.pushNamed(
             AppRoute.productScreen.name,
-            extra: product.id,
+            extra: product,
           );
         },
         child: isElevationEnabled

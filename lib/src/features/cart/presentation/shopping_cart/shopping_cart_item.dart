@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
-
 class ShoppingCartItem extends ConsumerWidget {
   const ShoppingCartItem({
     Key? key,
@@ -21,6 +20,9 @@ class ShoppingCartItem extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ListTile(
+          onTap: () {
+            context.pushNamed(AppRoute.productScreen.name, extra: item.product);
+          },
           leading: ImageFromUrl(imageUrl: item.imageUrls.first),
           title: Text(
             item.name,

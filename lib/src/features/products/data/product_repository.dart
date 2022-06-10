@@ -1,3 +1,5 @@
+import 'package:arms/src/features/products/domain/product_option.dart';
+import 'package:arms/src/features/products/presentation/product_screen/prodcut_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../constants/test_products.dart';
 import '../domain/product.dart';
@@ -42,6 +44,12 @@ class FakeProductsRepository {
     return watchProductsList()
         .map((products) => products.firstWhere((product) => product.id == id));
   }
+
+  Future<List<ProductOption>> fetchProductOptions(String productId) async {
+    await Future.delayed(const Duration(seconds: 1));
+    return Future.value(options);
+  }
+
 }
 
 final productsRepositoryProvider = Provider<FakeProductsRepository>((ref) {
@@ -76,4 +84,10 @@ final productProvider =
     StreamProvider.autoDispose.family<Product?, String>((ref, id) {
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.watchProduct(id);
+});
+
+final productOptionsListProvider =
+    FutureProvider.autoDispose.family<List<ProductOption>, String>((ref, id) {
+  final productsRepository = ref.watch(productsRepositoryProvider);
+  return productsRepository.fetchProductOptions(id);
 });

@@ -11,6 +11,7 @@ class ProductScreenState {
     this.selectSKU,
     this.skusList = const [],
     this.selectedOptionValuesList = const [],
+    this.quantity  = 1,
   });
 
   final AsyncValue<void> value;
@@ -18,6 +19,7 @@ class ProductScreenState {
   final SKU? selectSKU;
   final List<SKU>? skusList;
   final List<OptionValue> selectedOptionValuesList;
+  final int quantity;
 
   ProductScreenState copyWith({
     AsyncValue<void>? value,
@@ -25,12 +27,14 @@ class ProductScreenState {
     SKU? selectSKU,
     List<SKU>? skusList,
     List<OptionValue>? selectedOptionValuesList,
+    int? quantity,
   }) {
     return ProductScreenState(
       value: value ?? this.value,
       // product: product ?? this.product,
       selectSKU: selectSKU ?? this.selectSKU,
       skusList: skusList ?? this.skusList,
+      quantity: quantity ?? this.quantity,
       selectedOptionValuesList:
           selectedOptionValuesList ?? this.selectedOptionValuesList,
     );

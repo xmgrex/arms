@@ -23,7 +23,7 @@ class ProductOption {
     return {
       'id': id,
       'name': name,
-      'values': values,
+      'values': values.map((e) => e.toMap()).toList(),
     };
   }
 
