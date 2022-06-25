@@ -5,41 +5,42 @@ import 'package:arms/src/features/authentication/domain/app_user.dart';
 import 'package:arms/src/features/cart/data/cart_repository.dart';
 import 'package:arms/src/features/checkout/data/checkout_repository.dart';
 import 'package:arms/src/features/checkout/domain/delivery_options.dart';
-import 'package:arms/src/features/checkout/domain/order.dart';
+import 'package:arms/src/features/order/domain/order.dart';
 import 'package:arms/src/features/checkout/domain/payment_summary.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
 import '../../cart/domain/cart.dart';
-import '../../cart/presentation/shopping_cart/shopping_cart_page.dart';
-import '../../top_level_providers.dart';
 import '../domain/scheduled_delivery_date.dart';
 import 'checkout_screen_state.dart';
 
 final checkoutScreenControllerProvider = StateNotifierProvider.autoDispose<
-    CheckoutScreenController, CheckoutScreenState>((ref) {
-  final cartItems = ref.watch(cartItemsListStreamProvider).value!;
-  return CheckoutScreenController(cartItems, ref.read);
+    CheckoutScreenController,
+    CheckoutScreenState>((ref) {
+  final cartItems = ref
+      .watch(cartItemsListStreamProvider)
+      .value!;
+  return CheckoutScreenController(cartItems, ref);
 });
 
 class CheckoutScreenController extends StateNotifier<CheckoutScreenState> {
-  CheckoutScreenController(List<CartItem> cartItems, this._read)
+  CheckoutScreenController(List<CartItem> cartItems, this.ref)
       : super(CheckoutScreenState(
-          paymentSummary: PaymentSummary.init(cartItems),
-        )) {
+    paymentSummary: PaymentSummary.init(cartItems),
+  )) {
     initState();
   }
 
-  final Reader _read;
+  final Ref ref;
 
   Future<void> initState() async {
     DeliveryOptions? options;
     PaymentSummary? paymentSummary;
     state = state.copyWith(asyncValue: const AsyncValue.loading());
-    final appUser = await _read(authRepositoryProvider).fetchAppUser();
+    final appUser = await ref.read(authRepositoryProvider).fetchAppUser();
     final result = await AsyncValue.guard(() async {
       final defaultAddressId =
-          await _read(checkoutRepositoryProvider).getDefaultAddressId();
+      await ref.read(checkoutRepositoryProvider).getDefaultAddressId();
       final i = appUser.addresses.indexWhere((e) => e.id == defaultAddressId);
       options = DeliveryOptions(
         address: appUser.addresses[i],
@@ -123,8 +124,8 @@ class CheckoutScreenController extends StateNotifier<CheckoutScreenState> {
   void setCreditCard(AppUser user) {
     state = state.copyWith(
         paymentSummary: state.paymentSummary!.copyWith(
-      creditCard: user.defaultCard,
-    ));
+          creditCard: user.defaultCard,
+        ));
   }
 
   Future<void> placeOrder(List<CartItem> items) async {
@@ -132,17 +133,20 @@ class CheckoutScreenController extends StateNotifier<CheckoutScreenState> {
     final isPaymentSummary = state.paymentSummary != null;
     final isCreditCard = state.paymentSummary!.creditCard != null;
     final isDeliveryOptions = state.deliveryOptions != null;
-
     if (cartIsNotEmpty &&
         isPaymentSummary &&
         isCreditCard &&
         isDeliveryOptions) {
-      final order = Order.create(
-        state.deliveryOptions!,
-        state.paymentSummary!,
-        items,
-      );
-      logger.info(order.toString());
+      state = state.copyWith(asyncValue: const AsyncValue.loading());
+      state = state.copyWith(asyncValue: await AsyncValue.guard(() async {
+        final order = Order.create(
+          state.deliveryOptions!,
+          state.paymentSummary!,
+          items,
+        );
+        await ref.watch(checkoutRepositoryProvider).placeOrder(order);
+        logger.info(order.toString());
+      }));
     } else {
       logger.shout('error');
     }

@@ -63,7 +63,7 @@ class SelectDeliveringWindowModalSheetBodyWidget extends ConsumerWidget {
                 selectDate.year,
                 selectDate.month,
                 selectDate.day,
-                deliveryTime.hour,
+                deliveryTime.hour.round(),
               );
               final isEnabled = date.isAfter(now);
               final isSelected = deliveryTime == selectDeliveryTime;

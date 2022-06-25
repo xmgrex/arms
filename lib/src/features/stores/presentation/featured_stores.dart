@@ -1,7 +1,8 @@
-import 'package:arms/src/features/stores/presentaiton/stroes_grid.dart';
+import 'package:arms/src/common_widget/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_kit/x_kit.dart';
+
+import 'stores_grid.dart';
 
 class FeaturedStores extends ConsumerStatefulWidget {
   const FeaturedStores({
@@ -18,16 +19,17 @@ class _FeaturedStoresState extends ConsumerState<FeaturedStores> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Featured stores', style: TextStyles.title.bold),
-              TextButton(onPressed: () {}, child: const Text('View more')),
-            ],
-          ),
-        ),
+        SectionTitle(title: 'Featured Stores', press: () {}),
+        // Padding(
+        //   padding: const EdgeInsets.only(left: 16.0),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Text('Featured stores', style: TextStyles.title.bold),
+        //       TextButton(onPressed: () {}, child: const Text('View more')),
+        //     ],
+        //   ),
+        // ),
         const StoresGrid(),
       ],
     );

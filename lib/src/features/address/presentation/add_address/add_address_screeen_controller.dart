@@ -1,7 +1,5 @@
 import 'package:arms/src/features/address/data/address_repository.dart';
-import 'package:arms/src/features/authentication/data/auth_repository.dart';
 import 'package:arms/src/features/authentication/domain/app_user.dart';
-import 'package:arms/src/features/authentication/presentation/account/app_user_notifier.dart';
 import 'package:arms/src/features/top_level_providers.dart';
 import 'package:arms/src/service/shered_prefs_manager.dart';
 import 'package:flutter/material.dart';

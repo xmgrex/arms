@@ -4,6 +4,7 @@ import 'package:arms/src/features/checkout/domain/payment_summary.dart';
 import 'package:arms/src/features/products/domain/sku.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
+import 'package:x_kit/x_kit.dart';
 
 import '../../../constants/types.dart';
 import '../../authentication/domain/location.dart';
@@ -20,7 +21,6 @@ class OrderItem {
     required this.discount,
     required this.taxRate,
     required this.imageUrls,
-    this.productReference,
   });
 
   factory OrderItem.fromMap(Map<String, dynamic> map) {
@@ -35,7 +35,6 @@ class OrderItem {
       discount: Discount.fromMap(map['discount'] as Map<String, dynamic>),
       taxRate: map['taxRate'] as double,
       imageUrls: map['imageUrls'].cast<String>() as List<String>,
-      productReference: map['productReference'] as DocumentReference,
     );
   }
 
@@ -64,7 +63,6 @@ class OrderItem {
   final Discount discount;
   final double taxRate;
   final List<String> imageUrls;
-  final DocumentReference? productReference;
 
   Map<String, dynamic> toMap() {
     return {
@@ -74,17 +72,16 @@ class OrderItem {
       'caption': caption,
       'description': description,
       'currency': currency,
-      'price': price,
+      'price': price.toDouble(),
       'discount': discount.toMap(),
-      'taxRate': taxRate,
+      'taxRate': taxRate.toDouble(),
       'imageUrls': imageUrls,
-      'productReference': productReference,
     };
   }
 
   @override
   String toString() {
-    return 'OrderItem{productId: $productId, skuId: $skuId, name: $name, caption: $caption, description: $description, currency: $currency, price: $price, discount: $discount, taxRate: $taxRate, imageUrls: $imageUrls, productReference: $productReference}';
+    return 'OrderItem{productId: $productId, skuId: $skuId, name: $name, caption: $caption, description: $description, currency: $currency, price: $price, discount: $discount, taxRate: $taxRate, imageUrls: $imageUrls}';
   }
 }
 
@@ -113,12 +110,15 @@ class Order {
       orderItems.add(OrderItem.fromMap(map));
     }
 
+    final deliveryOptions = DeliveryOptions.fromMap(
+        map['deliveryOptions'] as Map<String, dynamic>);
+    final paymentSummary =  PaymentSummary.fromMap(map['paymentSummary'] as Map<String, dynamic>);
+
     return Order(
       id: map['id'] as String,
-      deliveryOptions: DeliveryOptions.fromMap(
-          map['deliveryOptions'] as Map<String, dynamic>),
-      paymentSummary:
-          PaymentSummary.fromMap(map['paymentSummary'] as Map<String, dynamic>),
+      deliveryOptions: deliveryOptions,
+      paymentSummary: paymentSummary
+         ,
       customerId: map['customerId'] as String,
       deliveryStatus: map['deliveryStatus'] as String,
       currency: map['currency'] as String,

@@ -1,4 +1,3 @@
-import 'package:arms/src/features/checkout/presentation/delivery_option/delivery_options_widget.dart';
 import 'package:uuid/uuid.dart';
 
 enum DeliveryInstruction {
@@ -73,8 +72,8 @@ class ShippingAddress {
 
   factory ShippingAddress.fromMap(Map<String, dynamic> map) {
     return ShippingAddress(
-      latitude: map['latitude'] == null ? null : map['latitude'] as double,
-      longitude: map['longitude'] == null ? null : map['longitude'] as double,
+      latitude: map['latitude'] == null ? 0.0 : map['latitude'] as double,
+      longitude: map['longitude'] == null ? 0.0 : map['longitude'] as double,
       id: map['id'] as String,
       fullName: map['fullName'] as String,
       instruction: map['instruction'] as String,
@@ -170,3 +169,4 @@ class ShippingAddress {
     return '〒$postalCode $state$city$line1$line2, $fullName';
   }
 }
+

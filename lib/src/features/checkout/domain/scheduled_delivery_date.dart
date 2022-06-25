@@ -1,4 +1,5 @@
 import 'package:arms/src/constants/constants.dart';
+import 'package:x_kit/x_kit.dart';
 
 const deliveryHours = [
   '午前中',
@@ -40,15 +41,25 @@ class DeliveryTime {
 
   Map<String, dynamic> toMap() {
     return {
-      'type': type,
+      'type': type.name,
       'string': string,
       'hour': hour,
     };
   }
 
   factory DeliveryTime.fromMap(Map<String, dynamic> map) {
+    final data = map['type'] as String;
+    late DeliveryTimeZoneType type;
+
+    for(var value in DeliveryTimeZoneType.values) {
+      if (data == value.name) {
+        type = value;
+      }
+    }
+
+
     return DeliveryTime(
-      type: map['type'] as DeliveryTimeZoneType,
+      type: type,
       string: map['string'] as String,
       hour: map['hour'] as int,
     );
@@ -99,8 +110,8 @@ class ScheduledDeliveryDate {
 
   Map<String, dynamic> toMap() {
     return {
-      'data': date.toIso8601String(),
-      'hour': deliveryTime,
+      'date': date.toIso8601String(),
+      'deliveryTime': deliveryTime.toMap(),
     };
   }
 

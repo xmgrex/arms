@@ -8,11 +8,13 @@ class DeliveryOptions {
   });
 
   factory DeliveryOptions.fromMap(Map<String, dynamic> map) {
+    final address =  ShippingAddress.fromMap(map['address'] as Map<String, dynamic>);
+    final scheduledDeliveryDate = ScheduledDeliveryDate.fromMap(
+      map['scheduledDeliveryDate'] as Map<String, dynamic>,
+    );
     return DeliveryOptions(
-      address: ShippingAddress.fromMap(map['address'] as Map<String, dynamic>),
-      scheduledDeliveryDate: ScheduledDeliveryDate.fromMap(
-        map['scheduledDeliveryDate'] as Map<String, dynamic>,
-      ),
+      address: address,
+      scheduledDeliveryDate: scheduledDeliveryDate,
     );
   }
 

@@ -18,12 +18,17 @@ final firestoreInstanceProvider = Provider.autoDispose((_) {
 
 class FirestorePath {
   static const _carts = 'carts';
+  static const _orders = 'orders';
   static const _creditCards = 'creditCards';
   static const _users = 'users';
   static const _customers = 'customers';
   static const _version = 'v1';
 
   static String user(String uid) => 'commerce/$_version/$_users/$uid';
+
+  static String order(String uid, String orderId) => 'commerce/$_version/$_users/$uid/$_orders/$orderId';
+
+  static String orders(String uid) => 'commerce/$_version/$_users/$uid/$_orders';
 
   static String customer(String uid) => 'commerce/$_version/$_customers/$uid';
 

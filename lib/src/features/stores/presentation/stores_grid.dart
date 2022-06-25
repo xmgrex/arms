@@ -1,6 +1,8 @@
-import 'package:arms/src/features/stores/presentaiton/stroe_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'store_avatar.dart';
+
 
 class StoresGrid extends ConsumerStatefulWidget {
   const StoresGrid({
@@ -22,7 +24,7 @@ class _StoresGridState extends ConsumerState<StoresGrid> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 8,
       itemBuilder: (_, int index) {
-        return StoreAvatar();
+        return const StoreAvatar();
       },
     );
   }

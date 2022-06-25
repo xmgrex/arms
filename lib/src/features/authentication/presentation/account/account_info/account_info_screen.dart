@@ -5,7 +5,7 @@ import 'package:arms/src/features/authentication/presentation/account/account_in
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../top_level_providers.dart';
+// import '../../../../top_level_providers.dart';
 import 'display_name/display_name_tile.dart';
 
 class AccountInfoScreen extends ConsumerWidget {
@@ -15,7 +15,7 @@ class AccountInfoScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final appUser = ref.watch(appUserStateProvider);
+    // final appUser = ref.watch(appUserStateProvider);
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),

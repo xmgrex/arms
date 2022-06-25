@@ -1,5 +1,4 @@
 import 'package:arms/src/features/address/domain/shipping_address.dart';
-import 'package:x_kit/x_kit.dart';
 
 import '../../payment/domain/credit_card.dart';
 

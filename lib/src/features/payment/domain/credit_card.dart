@@ -1,3 +1,5 @@
+import 'package:x_kit/x_kit.dart';
+
 class CreditCard {
   const CreditCard({
     required this.id,
@@ -24,6 +26,7 @@ class CreditCard {
   }
 
   factory CreditCard.fromMap(Map<String, dynamic> map) {
+    logger.info(map['fingerprint'].runtimeType);
     return CreditCard(
       id: map['id'] == null ? '' : map['id'] as String,
       fingerprint:  map['fingerprint'] == null ? '' : map['fingerprint'] as String,
