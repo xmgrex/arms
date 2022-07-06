@@ -26,17 +26,21 @@ class AmountWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('SubTotal', style: TextStyles.body.grey),
-              Text(paymentSummary.displaySubTotalAmount(currency)),
+              Text('SubTotal', style: TextStyles.body.small.grey.bold),
+              Text(
+                paymentSummary.displaySubTotalAmount(currency),
+                style: TextStyles.body.bold,
+              ),
             ],
           ),
           gapH4,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Delivery fee', style: TextStyles.body.grey),
+              Text('Delivery fee', style: TextStyles.body.small.grey.bold),
               Text(
                 paymentSummary.displayDeliveryFee(currency),
+                style: TextStyles.body.bold,
               ),
             ],
           ),

@@ -1,4 +1,4 @@
-import 'package:arms/src/features/products/presentation/product_screen/porduct_screen_controller.dart';
+import 'package:arms/src/features/products/presentation/product_screen/product_screen_controller.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,17 +20,20 @@ class ProductImages extends ConsumerWidget {
 
     return Container(
       color: SystemColors.grey0,
-      height: 280,
+      height: 320,
       child: state.selectSKU == null || state.selectSKU!.imageUrls.isEmpty
           ? const Center(child: Text('No Image'))
           : Swiper(
               containerHeight: 280,
               itemCount: state.selectSKU!.imageUrls.length,
               itemBuilder: (_, int i) {
-                return ImageFromUrl(
-                  imageUrl: state.selectSKU!.imageUrls[i],
-                  fit: BoxFit.fitHeight,
-                );
+                return state.selectSKU!.imageUrls[i].contains('http')
+                    ? ImageFromUrl(
+                        imageUrl: state.selectSKU!.imageUrls[i],
+                        fit: BoxFit.fitHeight,
+                      )
+                    : Image.asset(state.selectSKU!.imageUrls[i],
+                        fit: BoxFit.cover);
               },
               viewportFraction: 1,
               scale: 1,

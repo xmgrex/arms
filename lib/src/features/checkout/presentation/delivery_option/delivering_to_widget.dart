@@ -20,6 +20,7 @@ class DeliveringToWidget extends ConsumerWidget {
         state.deliveryOptions != null
             ? state.deliveryOptions!.address.displayFullAddress()
             : '',
+        style: TextStyles.body.small.bold,
       ),
       onTap: () {
         showChooseAddressModalSheet(context);

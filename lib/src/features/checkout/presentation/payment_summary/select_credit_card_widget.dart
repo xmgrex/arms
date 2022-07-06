@@ -16,12 +16,19 @@ class SelectCreditCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final title = paymentSummary.creditCard == null
-        ? const Text('Add credit card',
-            style: TextStyle(color: Colors.blue))
-        : Text('••••${paymentSummary.creditCard!.last4} ');
+        ? const Text(
+            'Add credit card',
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
+          )
+        : Text(
+            '••••${paymentSummary.creditCard!.last4}',
+            style: TextStyles.body.bold,
+          );
     final subTitle = paymentSummary.creditCard == null
         ? const SizedBox()
-        : Text('${paymentSummary.creditCard!.expMonth}/${paymentSummary.creditCard!.expYear}',);
+        : Text(
+            '${paymentSummary.creditCard!.expMonth}/${paymentSummary.creditCard!.expYear}',
+          );
 
     return ListTile(
       onTap: () {

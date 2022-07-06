@@ -1,4 +1,5 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:arms/src/features/payment/presentation/payment_methods/empty_wallet_screen.dart';
 import 'package:arms/src/features/payment/presentation/payment_methods/payment_methods_controller.dart';
 import 'package:arms/src/features/top_level_providers.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,9 @@ class CreditCardList extends ConsumerWidget {
     return AsyncValueWidget<List<CreditCard>>(
       value: ref.watch(creditCardsStreamProvider),
       data: (data) {
-        return CreditCardsListViewBuilder(
+        return data.isEmpty
+          ? const EmptyWalletScreen()
+          : CreditCardsListViewBuilder(
           creditCards: data,
           builder: (_, index, creditCard) {
             final isDefault = nullCheckOnAppUser && appUser.defaultCard!.id == creditCard.id;

@@ -10,8 +10,9 @@ class OrderListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () {},
       leading: ImageFromUrl(imageUrl: order.items.first.imageUrls.first),
-      title: Text(order.items.first.name),
+      title: Text(order.items.first.name, style: TextStyles.body.bold,),
       subtitle: Text(
           '${order.items.length}items・Arriving ${order.deliveryOptions.scheduledDeliveryDate.displaySchedule()}'),
     );

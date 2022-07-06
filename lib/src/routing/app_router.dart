@@ -5,6 +5,7 @@ import 'package:arms/src/features/authentication/presentation/account/account_in
 import 'package:arms/src/features/authentication/presentation/sign_in/sign_in_screen.dart';
 import 'package:arms/src/features/cart/domain/cart.dart';
 import 'package:arms/src/features/checkout/presentation/checkout_screen.dart';
+import 'package:arms/src/features/entrypoint/presentation/entrypoint_ui.dart';
 import 'package:arms/src/features/payment/presentation/add_credit_card/add_credit_card_screen.dart';
 import 'package:arms/src/features/products/domain/product.dart';
 import 'package:arms/src/features/products/presentation/product_screen/product_screen.dart';
@@ -17,13 +18,12 @@ import 'package:x_kit/x_kit.dart';
 import '../features/address/presentation/add_address/add_address_screen.dart';
 import '../features/address/presentation/choose_address/choose_address_screen.dart';
 import '../features/address/presentation/edit_address/edit_address_screen.dart';
-import '../features/authentication/presentation/account/accessibility/acccessibility_settings_screen.dart';
+import '../features/authentication/presentation/account/accessibility/accessibility_settings_screen.dart';
 import '../features/authentication/presentation/account/account_info/account_info_screen.dart';
-import '../features/home/presentation/home_screen.dart';
 import '../features/payment/presentation/payment_methods/payment_methods_screen.dart';
 
 enum AppRoute {
-  home,
+  entrypoint,
   signIn,
   productScreen,
   checkoutScreen,
@@ -67,8 +67,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/',
-        name: AppRoute.home.name,
-        builder: (context, state) => const HomeScreen(),
+        name: AppRoute.entrypoint.name,
+        builder: (context, state) => const EntryPointUI(),
         routes: [
           GoRoute(
             path: 'productScreen',

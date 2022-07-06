@@ -1,42 +1,41 @@
-import 'package:arms/src/features/products/domain/product_option.dart';
+import 'package:arms/src/features/products/domain/color_option.dart';
+import 'package:arms/src/features/products/domain/size_option.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/product.dart';
 import '../../domain/sku.dart';
 
 class ProductScreenState {
   ProductScreenState({
     this.value = const AsyncValue.data(null),
-    // this.product,
     this.selectSKU,
     this.skusList = const [],
-    this.selectedOptionValuesList = const [],
-    this.quantity  = 1,
+    this.filteredSKUs = const [],
+    this.selectColor,
+    this.selectSize,
   });
 
   final AsyncValue<void> value;
-  // final Product? product;
   final SKU? selectSKU;
-  final List<SKU>? skusList;
-  final List<OptionValue> selectedOptionValuesList;
-  final int quantity;
+  final List<SKU> skusList;
+  final List<SKU> filteredSKUs;
+  final ColorOption? selectColor;
+  final SizeOption? selectSize;
 
   ProductScreenState copyWith({
     AsyncValue<void>? value,
-    // Product? product,
     SKU? selectSKU,
     List<SKU>? skusList,
-    List<OptionValue>? selectedOptionValuesList,
-    int? quantity,
+    List<SKU>? filteredSKUs,
+    ColorOption? selectColor,
+    SizeOption? selectSize,
   }) {
     return ProductScreenState(
       value: value ?? this.value,
-      // product: product ?? this.product,
       selectSKU: selectSKU ?? this.selectSKU,
       skusList: skusList ?? this.skusList,
-      quantity: quantity ?? this.quantity,
-      selectedOptionValuesList:
-          selectedOptionValuesList ?? this.selectedOptionValuesList,
+      filteredSKUs: filteredSKUs ?? this.filteredSKUs,
+      selectColor: selectColor ?? this.selectColor,
+      selectSize: selectSize ?? this.selectSize,
     );
   }
 }

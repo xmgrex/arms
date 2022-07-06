@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="236px" height="236px" viewBox="0 0 236 236" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artwork 3</title>
+    <defs>
+        <circle id="path-1" cx="118" cy="118" r="118"></circle>
+    </defs>
+    <g id="Empty-States" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2.2_No-Notifications" transform="translate(-70.000000, -143.000000)">
+            <g id="Artwork" transform="translate(70.000000, 143.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <circle stroke-opacity="0.0198992301" stroke="#1B3554" cx="118" cy="118" r="117.5"></circle>
+                <path d="M76,48 L160,48 C176.568542,48 190,61.4314575 190,78 L190,238 L190,238 L46,238 L46,78 C46,61.4314575 59.4314575,48 76,48 Z" id="base" stroke="#DEC6FF" stroke-width="2" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                <rect id="screen" stroke-opacity="0.1" stroke="#1B3554" fill="#FFFFFF" mask="url(#mask-2)" x="53.5" y="86.5" width="128" height="151"></rect>
+                <g id="1" mask="url(#mask-2)">
+                    <g transform="translate(63.000000, 96.000000)">
+                        <path d="M3,0 L106,0 C107.656854,-3.04359188e-16 109,1.34314575 109,3 L109,37 C109,38.6568542 107.656854,40 106,40 L3,40 C1.34314575,40 2.02906125e-16,38.6568542 0,37 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z" id="Rectangle" fill="#91F6BA"></path>
+                        <rect id="Rectangle-2" fill="#FFFFFF" x="9" y="10" width="78" height="4" rx="2"></rect>
+                        <rect id="Rectangle-2-Copy" fill="#FFFFFF" x="9" y="18" width="57" height="4" rx="2"></rect>
+                        <rect id="Rectangle-2-Copy-2" fill="#FFFFFF" opacity="0.550000012" x="9" y="28" width="17" height="4" rx="2"></rect>
+                    </g>
+                </g>
+                <g id="2" mask="url(#mask-2)">
+                    <g transform="translate(63.000000, 146.000000)">
+                        <path d="M3,0 L106,0 C107.656854,-3.04359188e-16 109,1.34314575 109,3 L109,37 C109,38.6568542 107.656854,40 106,40 L3,40 C1.34314575,40 2.02906125e-16,38.6568542 0,37 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z" id="Rectangle" fill="#D0AEFF"></path>
+                        <rect id="Rectangle-2" fill="#FFFFFF" x="9" y="10" width="78" height="4" rx="2"></rect>
+                        <rect id="Rectangle-2-Copy" fill="#FFFFFF" x="9" y="18" width="57" height="4" rx="2"></rect>
+                        <rect id="Rectangle-2-Copy-2" fill="#FFFFFF" opacity="0.550000012" x="9" y="28" width="17" height="4" rx="2"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

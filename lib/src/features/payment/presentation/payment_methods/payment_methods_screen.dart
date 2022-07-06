@@ -26,15 +26,9 @@ class PaymentMethodsScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: backPageButton(context: context),
-          title: const Text('Payment methods'),
+          title: Text('Payment methods', style: TextStyles.title.bold),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: const [
-              CreditCardList(),
-            ],
-          ),
-        ),
+        body: const CreditCardList(),
       ),
     );
   }

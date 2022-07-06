@@ -1,13 +1,14 @@
 import 'package:arms/src/features/home/presentation/components/discount_banner.dart';
+import 'package:arms/src/features/home/presentation/components/special_offers.dart';
 import 'package:arms/src/features/home/presentation/home_page_app_bar.dart';
+import 'package:arms/src/utils/super_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 import 'package:arms/src/common_widget/common_widget.dart';
 
 import '../../products/presentation/products_list/products_list.dart';
-import '../../stores/presentation/featured_stores.dart';
-import 'components/categories_widet.dart';
+import '../../products/presentation/products_list/popular_product.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({
@@ -23,19 +24,30 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const SearchBar(hint: 'Input keywords',),
+        toolbarHeight: Sizes.p64,
+        title: const SearchBar(
+          hint: 'Input keywords',
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(SuperIcons.bell),
+            color: Theme.of(context).colorScheme.outline,
+          )
+        ],
       ),
       body: ListView(
+        shrinkWrap: true,
         children: const [
-          gapH16,
-          CategoriesWidget(),
-          gapH16,
-          DiscountBanner(),
-          FeaturedStores(),
-          ProductsList(),
-          ProductsList(),
-          ProductsList(),
-          ProductsList(),
+          // DiscountBanner(),
+          // gapH16,
+          // CategoriesWidget(),
+          gapH8,
+          SpecialOffers(),
+          gapH8,
+          PopularProducts(),
+          gapH8,
+          // FeaturedStores(),
           ProductsList(),
         ],
       ),

@@ -20,8 +20,6 @@ class HomePageAppBar extends ConsumerWidget with PreferredSizeWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Shop with Dark', style: TextStyles.title.large.bold),
-            gapH12,
             const SearchBar(),
           ],
         ),

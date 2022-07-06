@@ -22,7 +22,7 @@ class DeliveryOptionsWidget extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Delivery options', style: TextStyles.title.large.bold),
+          Text('Delivery options', style: TextStyles.title.bold),
           const DeliveringToWidget(),
           divider(context),
           const DeliveryInstructionsWidget(),

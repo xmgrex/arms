@@ -1,9 +1,16 @@
+import 'package:arms/src/common_widget/common_widget.dart';
+import 'package:arms/src/constants/constants.dart';
+import 'package:arms/src/features/products/presentation/product_screen/product_screen_controller.dart';
+import 'package:arms/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../products/domain/sku.dart';
 
-class AddToCartWidget extends StatefulWidget {
+var _quantity = 1;
+
+class AddToCartWidget extends ConsumerStatefulWidget {
   const AddToCartWidget({
     Key? key,
     required this.addToCart,
@@ -12,51 +19,102 @@ class AddToCartWidget extends StatefulWidget {
   final Function(int) addToCart;
 
   @override
-  State createState() => _AddToCartWidgetState();
+  ConsumerState createState() => _AddToCartWidgetState();
 }
 
-class _AddToCartWidgetState extends State<AddToCartWidget> {
+class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
+  @override
+  void initState() {
+    _quantity = 1;
+    super.initState();
+  }
 
-  var quantity = 1;
+  void showModal(BuildContext context, List<int> items, SKU selectSKU) {
+    showHalfModalBottomSheet(
+      height: MediaQuery.of(context).size.height * 0.8,
+      widget: Scaffold(
+        appBar: AppBar(
+          title: Text('Quantity', style: TextStyles.body.large),
+          leading: gap0,
+          actions: [
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.close),
+            ),
+          ],
+        ),
+        body: SizedBox(
+          height: double.infinity,
+          child: ListView.separated(
+            itemBuilder: (c, index) {
+              return RadioListTile(
+                title: Text('${items[index]}'),
+                value: items[index],
+                groupValue: _quantity,
+                onChanged: (int? value) {
+                  if (selectSKU.inventory >= value!) {
+                    setState(() {
+                      _quantity = value;
+                    });
+                  }
+                  Navigator.pop(context);
+                },
+              );
+            },
+            separatorBuilder: (context, _) => divider(context),
+            itemCount: items.length,
+          ),
+        ),
+      ),
+      context: context,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final selectSKU = ref.watch(productScreenControllerProvider).selectSKU;
+    final itemLength = selectSKU!.inventory < 10 ? selectSKU.inventory : 10;
+    final items = List.generate(itemLength, (index) => index + 1);
     return Container(
-      padding: const EdgeInsets.all(Sizes.p8).copyWith(bottom: Sizes.p32),
-      width: double.infinity,
-      color: Theme.of(context).colorScheme.surface,
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: const EdgeInsets.all(Sizes.p16),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
+        borderRadius: BorderRadius.circular(60),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _ItemQuantityButton(
-            decrement: () {
-              if (quantity > 1) {
-                setState(() {
-                  quantity -= 1;
-                });
-                HapticFeedback.mediumImpact();
-              }
-            },
-            increment: () {
-              setState(() {
-                quantity += 1;
-              });
-              HapticFeedback.mediumImpact();
-            },
-            quantityString: '$quantity',
-          ),
-          gapW4,
-          Expanded(
-            child: ScaleButton(
-              height: Sizes.p48,
-              label: 'AddToCart',
-              radius: Sizes.p4,
-              onPressed: () {
-                widget.addToCart(quantity);
-              },
+          SizedBox(
+            width: getProportionateScreenWidth(164),
+            child: InkWell(
+              onTap: () => showModal(context, items, selectSKU),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Qty: $_quantity', style: TextStyles.body.bold),
+                      const Icon(Icons.arrow_drop_down_sharp)
+                    ],
+                  ),
+                  divider(
+                    context,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                ],
+              ),
             ),
           ),
+          gapH32,
+          ScaleButton(
+            height: Sizes.p48,
+            label: 'Add to cart',
+            radius: 0,
+            onPressed: () {
+              widget.addToCart(_quantity);
+            },
+          ),
+          gapH48,
         ],
       ),
     );
@@ -68,41 +126,40 @@ class _ItemQuantityButton extends StatelessWidget {
     Key? key,
     required this.decrement,
     required this.increment,
-    required this.quantityString,
+    required this.quantity,
   }) : super(key: key);
 
   final VoidCallback decrement;
   final VoidCallback increment;
-  final String quantityString;
+  final int quantity;
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Material(
-        borderRadius: BorderRadius.circular(Sizes.p4),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceVariant,
-            borderRadius: BorderRadius.circular(Sizes.p4),
-          ),
-          height: Sizes.p48,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                onPressed: decrement,
-                icon: const Icon(Icons.remove),
-              ),
-              Text(
-                quantityString,
-                style: TextStyles.title.bold,
-              ),
-              IconButton(
-                onPressed: increment,
-                icon: const Icon(Icons.add),
-              ),
-            ],
-          ),
+    return Material(
+      borderRadius: BorderRadius.circular(Sizes.p4),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceVariant,
+          borderRadius: BorderRadius.circular(0),
+        ),
+        height: Sizes.p48,
+        // width: getProportionateScreenWidth(128),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: decrement,
+              icon: const Icon(Icons.remove),
+            ),
+            Text(
+              '$quantity',
+              style: TextStyles.title.bold,
+            ),
+            IconButton(
+              onPressed: increment,
+              icon: const Icon(Icons.add),
+            ),
+          ],
         ),
       ),
     );

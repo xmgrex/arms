@@ -1,3 +1,4 @@
+import 'package:arms/src/common_widget/common_widget.dart';
 import 'package:arms/src/routing/app_router.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,9 @@ class CreditCardsListViewBuilder extends StatelessWidget {
           ),
         ),
         LiveList(
+          separatorBuilder: (context, index) {
+            return divider(context, padding: 16.0);
+          },
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: creditCards.length,

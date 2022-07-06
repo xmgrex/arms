@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../common_widget/section_title.dart';
+import '../../../../utils/size_config.dart';
 import 'loading_shimmer_widget.dart';
 
 class ProductsList extends ConsumerStatefulWidget {
@@ -22,44 +24,34 @@ class _ProductsListState extends ConsumerState<ProductsList> {
   @override
   Widget build(BuildContext context) {
     final productListValue = ref.watch(productsListStreamProvider);
-    return SizedBox(
-      height: 210.0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Products', style: TextStyles.title.bold),
-                TextButton(onPressed: () {}, child: const Text('View more')),
-              ],
-            ),
-          ),
-          gapH12,
-          AsyncValueWidget<List<Product>>(
+    return Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+          child: SectionTitle(title: "Popular Products", press: () {}),
+        ),
+        SizedBox(height: getProportionateScreenWidth(20)),
+        SizedBox(
+          height: 193,
+          child: AsyncValueWidget<List<Product>>(
             value: productListValue,
             data: (products) {
               return products.isEmpty
                   ? const Center(
                       child: Text('No products found'),
                     )
-                  : SizedBox(
-                      height: 144,
-                      child: LiveList(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: products.length,
-                        itemBuilder: (c, index, animation) {
-                          return ProductCard(product: products[index]);
-                        },
-                      ),
-                    );
+                  : LiveList(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: products.length,
+                    itemBuilder: (c, index, animation) {
+                      return ProductCard(product: products[index]);
+                    },
+                  );
             },
             loading: () => const LoadingShimmerWidget(),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

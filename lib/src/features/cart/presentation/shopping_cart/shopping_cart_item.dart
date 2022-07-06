@@ -1,8 +1,10 @@
 import 'package:arms/src/features/cart/domain/cart.dart';
 import 'package:arms/src/features/cart/presentation/shopping_cart/shopping_cart_page_controller.dart';
 import 'package:arms/src/routing/app_router.dart';
+import 'package:arms/src/utils/super_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
@@ -99,7 +101,7 @@ class _QuantityButtonWidgetState extends ConsumerState<QuantityButtonWidget> {
             width: 110,
             height: Sizes.p32,
             iconSize: Sizes.p20,
-            icon: XIcons.delete,
+            icon: SuperIcons.delete,
             iconColor: Theme.of(context).colorScheme.background,
             textStyle: TextStyle(
               color: Theme.of(context).colorScheme.background,

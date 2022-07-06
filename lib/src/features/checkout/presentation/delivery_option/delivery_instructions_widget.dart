@@ -26,11 +26,13 @@ class DeliveryInstructionsWidget extends ConsumerWidget {
               'No delivery instructions',
               style: TextStyles.body.large.grey,
             )
-          : Text(state.deliveryOptions!.address.instruction),
+          : Text(
+              state.deliveryOptions!.address.instruction,
+              style: TextStyles.body.small.bold,
+            ),
     );
   }
 }
-
 
 void showSelectDeliveryInstructionModalSheet(BuildContext context) {
   showHalfModalBottomSheet(
@@ -61,8 +63,8 @@ class SelectDeliveryInstructionModalSheetBodyWidget extends ConsumerWidget {
             title: Text(displayDeliveryInstruction(e)),
             value: e,
             groupValue: state.deliveryOptions != null
-            ? convertToDeliveryInstruction(instruction)
-            : DeliveryInstruction.noSetup,
+                ? convertToDeliveryInstruction(instruction)
+                : DeliveryInstruction.noSetup,
             onChanged: controller.selectDeliveryInstruction,
           );
         }).toList(),
@@ -70,4 +72,3 @@ class SelectDeliveryInstructionModalSheetBodyWidget extends ConsumerWidget {
     );
   }
 }
-

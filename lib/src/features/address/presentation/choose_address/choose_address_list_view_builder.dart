@@ -1,3 +1,4 @@
+import 'package:arms/src/common_widget/common_widget.dart';
 import 'package:arms/src/features/address/domain/shipping_address.dart';
 import 'package:flutter/material.dart';
 import 'package:x_kit/x_kit.dart';
@@ -23,12 +24,15 @@ class ChooseAddressListViewBuilder extends StatelessWidget {
       );
     }
     return Scrollbar(
-      child: ListView.builder(
+      child: ListView.separated(
         shrinkWrap: true,
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         itemCount: addresses.length,
         itemBuilder: (context, index) {
           return itemBuilder(context, addresses[index], index);
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return divider(context, padding: 16.0);
         },
       ),
     );

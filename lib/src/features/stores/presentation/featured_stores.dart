@@ -1,4 +1,5 @@
 import 'package:arms/src/common_widget/section_title.dart';
+import 'package:arms/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,17 +20,10 @@ class _FeaturedStoresState extends ConsumerState<FeaturedStores> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SectionTitle(title: 'Featured Stores', press: () {}),
-        // Padding(
-        //   padding: const EdgeInsets.only(left: 16.0),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: [
-        //       Text('Featured stores', style: TextStyles.title.bold),
-        //       TextButton(onPressed: () {}, child: const Text('View more')),
-        //     ],
-        //   ),
-        // ),
+        Padding(
+          padding: EdgeInsets.only(left: getProportionateScreenWidth(16)),
+          child: SectionTitle(title: 'Featured Stores', press: () {}),
+        ),
         const StoresGrid(),
       ],
     );

@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:arms/src/utils/.env.stripe_key.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ void main() async {
   );
   Stripe.publishableKey = stripePublishKey;
   FlutterFireUIAuth.configureProviders(Constants.providerConfigs);
-  
+
   runApp(const ProviderScope(child: MyApp()));
 }
 

@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../service/firebase/firestore.dart';
@@ -13,3 +14,5 @@ final authStateChangesProvider = StreamProvider.autoDispose<User?>((ref) {
 final appUserStateProvider = StateNotifierProvider<AppUserNotifier, AppUser?>(
   (ref) => AppUserNotifier(ref.read),
 );
+
+final themeModeProvider = StateProvider<bool>((_) => false);

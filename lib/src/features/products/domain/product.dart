@@ -1,4 +1,6 @@
-import 'product_option.dart';
+import 'package:arms/src/constants/functions.dart';
+import 'package:arms/src/features/products/domain/size_option.dart';
+import 'color_option.dart';
 
 class Product {
   const Product({
@@ -6,18 +8,22 @@ class Product {
     required this.name,
     required this.description,
     required this.imageUrl,
-    required this.options,
+    required this.price,
+    this.colors,
+    this.sizes,
   });
 
   factory Product.fromMap(Map<String, dynamic> map) {
-    final options = map['options'].cast<Map<String, dynamic>>()
-        as List<Map<String, dynamic>>;
+    final colors = toListMap(map['colors']);
+    final sizes = toListMap(map['sizes']);
     return Product(
       id: map['id'] as String,
       name: map['name'] as String,
       description: map['description'] as String,
       imageUrl: map['imageUrl'] == null ? '' : map['imageUrl'] as String,
-      options: options.map((e) => ProductOption.fromMap(e)).toList(),
+      price: map['price'] == null ? 0.0 : map['price'] as double,
+      colors: colors.map((e) => ColorOption.fromMap(e)).toList(),
+      sizes: sizes.map((e) => SizeOption.fromMap(e)).toList(),
     );
   }
 
@@ -25,7 +31,10 @@ class Product {
   final String name;
   final String description;
   final String imageUrl;
-  final List<ProductOption> options;
+  final double price;
+  final List<ColorOption>? colors;
+  final List<SizeOption>? sizes;
+
 
   Map<String, dynamic> toMap() {
     return {
@@ -33,12 +42,14 @@ class Product {
       'name': name,
       'description': description,
       'imageUrl': imageUrl,
-      'options': options.map((e) => e.toMap()).toList(),
+      'price': price,
+      'colors': colors!.map((e) => e.toMap()).toList(),
+      'sizes': sizes!.map((e) => e.toMap()).toList(),
     };
   }
 
   @override
   String toString() {
-    return 'Product{id: $id, name: $name, description: $description, imageUrl: $imageUrl, options: ${options.toString()}}';
+    return 'Product{id: $id, name: $name, description: $description, imageUrl: $imageUrl}';
   }
 }

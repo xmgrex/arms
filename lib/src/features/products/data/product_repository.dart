@@ -1,14 +1,31 @@
-import 'package:arms/src/features/products/domain/product_option.dart';
+import 'package:arms/src/constants/demo_data/black_short_sleeve_shirt.dart';
+import 'package:arms/src/constants/demo_data/blue_short_sleeve_shirt.dart';
+import 'package:arms/src/constants/demo_data/gray_short_sleeve_shirt.dart';
+import 'package:arms/src/constants/demo_data/hybrid_knit_jacket.dart';
+import 'package:arms/src/constants/demo_data/white_short_sleeve_shirt.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../constants/test_products.dart';
+import '../../../constants/demo_data/compression_inner_long_sleeves.dart';
 import '../domain/product.dart';
 import '../domain/sku.dart';
 
 class FakeProductsRepository {
   FakeProductsRepository();
 
-  final List<Product> _products = kTestProducts;
-  final List<SKU> _skus = kTestSKUs;
+  final List<Product> _products = [
+    kShortSleeveShirts,
+    kHybridKnitJacket,
+    kCompressionInnerLongSleeves,
+    // ...kTestProducts,
+  ];
+  final List<SKU> _shirtSKUs = [
+    ...kBlackShortSleeveShirts,
+    ...kWhiteShortSleeveShirts,
+    ...kBlueShortSleeveShirts,
+    ...kGrayShortSleeveShirts,
+  ];
+  final List<SKU> _jacketSKUs = kHybridKnitJacketsList;
+  final List<SKU> _innerSKUs = kCompressionInnerLongSleevesList;
+  // final List<SKU> _testSKUs = kTestSKUs;
 
   List<Product> getProductsList() {
     return _products;
@@ -26,7 +43,15 @@ class FakeProductsRepository {
 
   Future<List<SKU>> fetchSKUsList(String id) async {
     await Future.delayed(const Duration(seconds: 1));
-    return Future.value(_skus);
+    if (id == 'Short sleeve shirt') {
+      return Future.value(_shirtSKUs);
+    } else if (id == 'Hybrid Knit Jacket') {
+      return Future.value(_jacketSKUs);
+    } else if (id == 'Compression inner long sleeves') {
+      return Future.value(_innerSKUs);
+    } else {
+      return Future.value(_shirtSKUs);
+    }
   }
 
   Stream<List<Product>> watchProductsList() async* {
@@ -36,17 +61,12 @@ class FakeProductsRepository {
 
   Stream<List<SKU>> watchSKUsList(String productId) async* {
     await Future.delayed(const Duration(seconds: 1));
-    yield _skus;
+    yield _shirtSKUs;
   }
 
   Stream<Product?> watchProduct(String id) {
     return watchProductsList()
         .map((products) => products.firstWhere((product) => product.id == id));
-  }
-
-  Future<List<ProductOption>> fetchProductOptions(String productId) async {
-    await Future.delayed(const Duration(seconds: 1));
-    return Future.value(options);
   }
 
 }
@@ -83,10 +103,4 @@ final productProvider =
     StreamProvider.autoDispose.family<Product?, String>((ref, id) {
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.watchProduct(id);
-});
-
-final productOptionsListProvider =
-    FutureProvider.autoDispose.family<List<ProductOption>, String>((ref, id) {
-  final productsRepository = ref.watch(productsRepositoryProvider);
-  return productsRepository.fetchProductOptions(id);
 });

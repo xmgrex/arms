@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="186px" height="202px" viewBox="0 0 186 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artwork</title>
+    <defs>
+        <path d="M6.48184759,52.605427 L59.8260518,3.6821955 C65.2666651,-1.30751967 73.6468434,-1.2152716 78.9762992,3.8929993 L129.839344,52.6451084 C133.774814,56.4172475 136,61.6323608 136,67.0836872 L136,136.550083 C136,144.834354 129.284271,151.550083 121,151.550083 L15,151.550083 C6.71572875,151.550083 1.01453063e-15,144.834354 0,136.550083 L0,67.3451541 C2.8663727e-15,61.7407548 2.35148172,56.3934833 6.48184759,52.605427 Z" id="path-1"></path>
+        <filter x="-32.4%" y="-20.5%" width="164.7%" height="158.1%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="13" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="12.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.226735433   0 0 0 0 0.437054197   0 0 0 0 0.687818878  0 0 0 0.0769927536 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M0,58.5500828 L62.1538101,103.337387 C65.6452543,105.853281 70.3547457,105.853281 73.8461899,103.337387 L136,58.5500828 L136,58.5500828 L136,141.550083 C136,147.07293 131.522847,151.550083 126,151.550083 L10,151.550083 C4.4771525,151.550083 6.76353751e-16,147.07293 0,141.550083 L0,58.5500828 L0,58.5500828 Z" id="path-4"></path>
+        <filter x="-19.9%" y="-32.3%" width="139.7%" height="158.1%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="-3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.108708411   0 0 0 0 0.237823149   0 0 0 0 0.391767645  0 0 0 0.0690104167 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M73.8461899,106.762778 L136,151.550083 L136,151.550083 L0,151.550083 L62.1538101,106.762778 C65.6452543,104.246885 70.3547457,104.246885 73.8461899,106.762778 Z" id="path-6"></path>
+        <filter x="-8.8%" y="-32.1%" width="117.6%" height="151.4%" filterUnits="objectBoundingBox" id="filter-7">
+            <feOffset dx="0" dy="-3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.25232519   0 0 0 0 0.423517195   0 0 0 0 0.62763074  0 0 0 0.0260699728 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <circle id="path-8" cx="17.6" cy="17.6" r="17.6"></circle>
+        <filter x="-36.9%" y="-31.2%" width="173.9%" height="173.9%" filterUnits="objectBoundingBox" id="filter-9">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 0.698039216   0 0 0 0 0.250980392  0 0 0 0.405315897 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Empty-States" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1.1_No-Messages" transform="translate(-93.000000, -123.000000)">
+            <g id="Artwork" transform="translate(118.000000, 135.449917)">
+                <g id="envelope">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Mask">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-1"></use>
+                        <use fill="#E3ECF3" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Rectangle" mask="url(#mask-2)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="#FDFEFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    </g>
+                    <g id="Rectangle-Copy" mask="url(#mask-2)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-7)" xlink:href="#path-6"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    </g>
+                </g>
+                <g id="face" transform="translate(47.000000, 49.550083)" fill="#1B3554" opacity="0.200000003">
+                    <circle id="Oval" cx="5" cy="5" r="5"></circle>
+                    <circle id="Oval-Copy-2" cx="40" cy="5" r="5"></circle>
+                    <path d="M10.1505098,20.5915207 C14.3905321,19.5305956 18.5571487,19.000133 22.6503598,19.000133 C26.7163012,19.000133 30.7822426,19.5235511 34.848184,20.5703872 C36.1147495,20.8964934 37,22.0385346 37,23.3464083 C37,24.2548982 36.2635234,24.9913747 35.3550335,24.9913747 C35.2154123,24.9913747 35.0763592,24.9735989 34.9412225,24.9384969 C30.8576421,23.8771045 26.7363235,23.3464083 22.5772668,23.3464083 C18.405884,23.3464083 14.2345012,23.8802547 10.0631184,24.9479477 C9.17860541,25.1743706 8.27802858,24.6408584 8.05163004,23.7563391 C8.01734544,23.6223922 8,23.4846733 8,23.3464083 C8,22.0435187 8.88658304,20.9077651 10.1505098,20.5915207 Z" id="Rectangle-3" transform="translate(22.500000, 22.000067) scale(1, -1) translate(-22.500000, -22.000067) "></path>
+                </g>
+                <g id="indicatprs" transform="translate(113.000000, 126.550083)">
+                    <g id="Oval-2">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
+                        <use fill="#FFB240" fill-rule="evenodd" xlink:href="#path-8"></use>
+                    </g>
+                    <text id="0" font-family="SFCompactText-Semibold, SF Compact Text" font-size="17.6" font-weight="500" letter-spacing="-0.16761905" fill="#FFFFFF">
+                        <tspan x="12.5580283" y="23.4">0</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

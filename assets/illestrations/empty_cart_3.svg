@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="234px" height="280px" viewBox="0 0 234 280" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artwork 2</title>
+    <defs>
+        <linearGradient x1="105.491615%" y1="-15.0571564%" x2="50%" y2="89.9442957%" id="linearGradient-1">
+            <stop stop-color="#EBE0D8" offset="0%"></stop>
+            <stop stop-color="#D3BDAF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="153.22449%" y1="-82.5011882%" x2="50%" y2="99.730095%" id="linearGradient-2">
+            <stop stop-color="#F9EDDD" offset="0%"></stop>
+            <stop stop-color="#F0D7B8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Empty-States" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4.3_No-Purchases" transform="translate(-61.000000, -151.000000)">
+            <g id="Artwork" transform="translate(61.000000, 151.000000)">
+                <circle id="base" fill="#FFFFFF" cx="126.5" cy="156.5" r="100.5"></circle>
+                <g id="container" transform="translate(117.000000, 140.000000) rotate(-24.000000) translate(-117.000000, -140.000000) translate(43.000000, 20.000000)">
+                    <path d="M38.4074663,205.758416 L147.718647,205.758416 L147.718647,205.758416 C147.718647,211.941796 142.706027,216.954416 136.522647,216.954416 L38.4074663,216.954416 C35.3157763,216.954416 32.8094663,214.448106 32.8094663,211.356416 C32.8094663,208.264726 35.3157763,205.758416 38.4074663,205.758416 Z" id="Rectangle-28-Copy" fill="#8F9EAF"></path>
+                    <rect id="Rectangle-28" fill="#8F9EAF" x="32.8094663" y="3.6" width="9.62601626" height="216.950495" rx="4.81300813"></rect>
+                    <path d="M6.38409431,3.36756434 L37.6946634,3.36756434 C40.3456302,3.36756434 42.4946634,5.51659754 42.4946634,8.16756434 C42.4946634,10.8185311 40.3456302,12.9675643 37.6946634,12.9675643 L6.38409431,12.9675643 C3.73312751,12.9675643 1.58409431,10.8185311 1.58409431,8.16756434 C1.58409431,5.51659754 3.73312751,3.36756434 6.38409431,3.36756434 Z" id="Rectangle-28-Copy-2" fill="#8F9EAF"></path>
+                    <path d="M4.46276818,0.400013922 L25.7599747,0.400013922 C27.7481998,0.400013922 29.3599747,2.01178882 29.3599747,4.00001392 L29.3599747,12.1675783 C29.3599747,14.1558034 27.7481998,15.7675783 25.7599747,15.7675783 L4.46276818,15.7675783 C2.47454308,15.7675783 0.862768182,14.1558034 0.862768182,12.1675783 L0.862768182,4.00001392 C0.862768182,2.01178882 2.47454308,0.400013922 4.46276818,0.400013922 Z" id="Rectangle-28-Copy-3" fill="#3B4D63"></path>
+                    <g id="Group" transform="translate(41.222964, 111.501427)">
+                        <rect id="Rectangle" fill="url(#linearGradient-1)" x="0.97689769" y="0.475247525" width="104.813974" height="93.6831683"></rect>
+                        <polygon id="Rectangle-Copy-2" fill="#FFFFFF" points="83.0243902 8.4 98.4893398 8.4 98.4893398 18 83.0243902 18"></polygon>
+                        <path d="M18.3151896,59.4905043 L25.4210414,69.650016 L21.5065145,69.6495043 L21.5073982,85.0635722 L15.4911381,85.0635722 L15.4905145,69.6495043 L11.2875145,69.650016 L18.3151896,59.4905043 Z" id="Combined-Shape" fill="#AD9A8E"></path>
+                    </g>
+                    <g id="Group-4" transform="translate(42.113821, 63.600000)">
+                        <rect id="Rectangle-Copy" fill="url(#linearGradient-2)" x="0.152096218" y="0.394628657" width="48.4517427" height="48.3207921"></rect>
+                        <polygon id="Rectangle-Copy-5" fill="#FF9D9D" points="17.9447539 0.488083972 27.4186739 0.488083972 27.4186739 15.2801632 22.5833641 12.5995701 17.9447539 15.2801632"></polygon>
+                    </g>
+                    <g id="Group-3" transform="translate(11.163577, 184.426581)">
+                        <ellipse id="Oval-16" fill="#3B4D63" cx="27.1923046" cy="27.1188119" rx="27.1923046" ry="27.1188119"></ellipse>
+                        <ellipse id="Oval-16-Copy" fill="#F6F9FA" cx="27.1923046" cy="27.1188119" rx="13.0611136" ry="13.0258133"></ellipse>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

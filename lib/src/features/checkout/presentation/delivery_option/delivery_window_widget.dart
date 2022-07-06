@@ -21,6 +21,7 @@ class DeliveryWindowWidget extends ConsumerWidget {
         state.deliveryOptions != null
             ? state.deliveryOptions!.scheduledDeliveryDate.displaySchedule()
             : '',
+        style: TextStyles.body.small.bold,
       ),
       onTap: () => showSelectDeliveringWindowModalSheet(context),
     );

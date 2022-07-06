@@ -1,3 +1,4 @@
+import 'package:arms/src/common_widget/common_widget.dart';
 import 'package:arms/src/features/address/presentation/choose_address/choose_address_list_tile.dart';
 import 'package:arms/src/features/address/presentation/choose_address/choose_address_list_view_builder.dart';
 import 'package:arms/src/features/top_level_providers.dart';
@@ -24,7 +25,7 @@ class ChooseAddressScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),
-        title: const Text('Choose address'),
+        title: Text('Choose address', style: TextStyles.title.bold),
       ),
       body: SingleChildScrollView(
         child: Column(

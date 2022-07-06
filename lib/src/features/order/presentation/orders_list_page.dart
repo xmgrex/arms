@@ -1,6 +1,7 @@
 import 'package:arms/src/common_widget/common_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:x_kit/x_kit.dart';
 
 import '../data/order_repository.dart';
 import '../domain/order.dart';
@@ -14,7 +15,7 @@ class OrdersListPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ordersListValue = ref.watch(ordersListStreamProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text('Orders')),
+      appBar: AppBar(title: Text('Orders', style: TextStyles.title.bold)),
       body: AsyncValueWidget<List<Order>>(
         value: ordersListValue,
         data: (ordersList) {

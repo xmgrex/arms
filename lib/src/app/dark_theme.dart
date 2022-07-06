@@ -1,12 +1,11 @@
+import 'package:arms/src/utils/colors.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:x_kit/x_kit.dart';
 
-final darkTheme = FlexThemeData.dark(
-  fontFamily: GoogleFonts.nunitoSans().fontFamily,
-  // colorScheme: flexSchemeDark,
-  textTheme: TextTheme(
+TextTheme textTheme() {
+  return TextTheme(
     displayLarge: TextStyles.display.large,
     displayMedium: TextStyles.display,
     displaySmall: TextStyles.display.small,
@@ -22,81 +21,86 @@ final darkTheme = FlexThemeData.dark(
     bodyLarge: TextStyles.body.large,
     bodyMedium: TextStyles.body,
     bodySmall: TextStyles.body.small,
-  ).copyWith(button: TextStyles.link.copyWith(fontWeight: FontWeight.w600)),
+  ).copyWith(
+    button: TextStyles.link.copyWith(fontWeight: FontWeight.w600),
+  );
+}
+
+ColorScheme darkColorScheme() {
+  return ColorScheme(
+    brightness: Brightness.light,
+    primary: DarkColors.primary,
+    secondary: DarkColors.secondary,
+    tertiary: DarkColors.tertiary,
+    onPrimary: DarkColors.onPrimary,
+    onSecondary: DarkColors.onSecondary,
+    onTertiary: DarkColors.onTertiary,
+    primaryContainer: DarkColors.primaryContainer,
+    secondaryContainer: DarkColors.secondaryContainer,
+    tertiaryContainer: DarkColors.tertiaryContainer,
+    error: DarkColors.error,
+    onError: DarkColors.onError,
+    background: DarkColors.background,
+    surface: DarkColors.surface,
+    onBackground: DarkColors.onBackground,
+    onSurface: DarkColors.onSurface,
+    outline: DarkColors.outline,
+    surfaceVariant: DarkColors.surfaceVariant,
+    inverseSurface: DarkColors.inverseSurface,
+  );
+}
+
+final darkTheme = FlexThemeData.dark(
+  fontFamily: GoogleFonts.nunitoSans().fontFamily,
+  textTheme: textTheme(),
   scheme: FlexScheme.materialBaseline,
+  colorScheme: darkColorScheme(),
   usedColors: 1,
-  appBarStyle: FlexAppBarStyle.background,
-  appBarOpacity: 0.90,
-  transparentStatusBar: false,
+  appBarElevation: 0.5,
   subThemesData: const FlexSubThemesData(
     blendOnColors: false,
     blendTextTheme: false,
     elevatedButtonRadius: 2.0,
     outlinedButtonRadius: 2.0,
     elevatedButtonSchemeColor: SchemeColor.tertiary,
+    inputDecoratorSchemeColor: SchemeColor.onSecondaryContainer,
     inputDecoratorRadius: 2.0,
     inputDecoratorUnfocusedBorderIsColored: false,
     cardRadius: 2.0,
     dialogRadius: 2.0,
     timePickerDialogRadius: 2.0,
-    appBarBackgroundSchemeColor: SchemeColor.background,
-    tabBarItemSchemeColor: SchemeColor.tertiary,
-    tabBarIndicatorSchemeColor: SchemeColor.tertiary,
-    bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.secondary,
+    appBarBackgroundSchemeColor: SchemeColor.onPrimary,
+    tabBarItemSchemeColor: SchemeColor.secondary,
+    tabBarIndicatorSchemeColor: SchemeColor.secondary,
+    bottomNavigationBarSelectedLabelSchemeColor: SchemeColor.inverseSurface,
     bottomNavigationBarUnselectedLabelSchemeColor: SchemeColor.outline,
-    bottomNavigationBarSelectedIconSchemeColor: SchemeColor.secondary,
+    bottomNavigationBarSelectedIconSchemeColor: SchemeColor.inverseSurface,
     bottomNavigationBarUnselectedIconSchemeColor: SchemeColor.outline,
     bottomNavigationBarBackgroundSchemeColor: SchemeColor.background,
-    bottomNavigationBarElevation: 2.0,
+    bottomNavigationBarElevation: 8.0,
+    bottomNavigationBarSelectedLabelSize: 12,
+    bottomNavigationBarUnselectedLabelSize: 11,
+    bottomNavigationBarLabelTextStyle: TextStyle(fontWeight: FontWeight.w600),
     navigationBarBackgroundSchemeColor: SchemeColor.background,
     navigationRailSelectedLabelSchemeColor: SchemeColor.secondary,
     navigationRailSelectedIconSchemeColor: SchemeColor.secondary,
   ),
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
-  useMaterial3: true,
+// useMaterial3: true,
 ).copyWith(
+  colorScheme: darkColorScheme(),
+  splashColor: DarkColors.onSurface.withOpacity(.25),
   inputDecorationTheme: const InputDecorationTheme(),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: ButtonStyle(
       side: MaterialStateProperty.all<BorderSide>(
         const BorderSide(
-          color: SystemColors.grey500,
+          color: SystemColors.grey400,
         ),
       ),
       shape: MaterialStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(2.0))),
     ),
   ),
-);
-
-const ColorScheme flexSchemeDark = ColorScheme(
-  brightness: Brightness.dark,
-  primary: Color(0xffD0BCFF),
-  onPrimary: Color(0xfff2f4f7),
-  primaryContainer: Color(0xff1a2c42),
-  onPrimaryContainer: Color(0xffd6dadf),
-  secondary: Color(0xffD0BCFF),
-  onSecondary: Color(0xff1e1a0f),
-  secondaryContainer: Color(0xffd48608),
-  onSecondaryContainer: Color(0xffffefd2),
-  tertiary: Color(0xffD0BCFF),
-  onTertiary: Color(0xff1e1d14),
-  tertiaryContainer: Color(0xffc68e2d),
-  onTertiaryContainer: Color(0xfffef1da),
-  error: Color(0xffcf6679),
-  onError: Color(0xff1e1214),
-  errorContainer: Color(0xffb1384e),
-  onErrorContainer: Color(0xfff9dde2),
-  outline: Color(0xff969696),
-  background: Color(0xff151618),
-  onBackground: Color(0xffe3e3e3),
-  surface: Color(0xff131314),
-  onSurface: Color(0xfff1f1f1),
-  surfaceVariant: Color(0xff151617),
-  onSurfaceVariant: Color(0xffe3e3e3),
-  inverseSurface: Color(0xfffafbfb),
-  onInverseSurface: Color(0xff0e0e0e),
-  inversePrimary: Color(0xff373f48),
-  shadow: Color(0xff000000),
 );
 

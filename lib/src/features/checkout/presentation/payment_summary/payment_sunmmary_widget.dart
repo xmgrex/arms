@@ -27,7 +27,7 @@ class PaymentSummaryWidget extends ConsumerWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text('Payment summary', style: TextStyles.title.large.bold),
+          child: Text('Payment summary', style: TextStyles.title.bold),
         ),
         SelectCreditCardWidget(paymentSummary: paymentSummary!),
         AmountWidget(

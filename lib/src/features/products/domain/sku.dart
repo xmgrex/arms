@@ -1,13 +1,15 @@
 import 'package:arms/src/constants/types.dart';
-import 'package:arms/src/features/products/domain/product_option.dart';
+import 'package:arms/src/features/products/domain/size_option.dart';
+import 'package:faker/faker.dart';
 import 'package:x_kit/x_kit.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import 'color_option.dart';
+
 class SKU {
   const SKU({
     required this.productId,
-    required this.optionValues,
     required this.id,
     required this.name,
     required this.caption,
@@ -21,15 +23,14 @@ class SKU {
     required this.tags,
     required this.imageUrls,
     this.productReference,
+    this.color,
+    this.size,
   });
 
   factory SKU.fromMap(Map<String, dynamic> map) {
-    final optionValues = map['optionValues'].cast<Map<String, dynamic>>()
-        as List<Map<String, dynamic>>;
 
     return SKU(
       productId: map['productId'] as String,
-      optionValues: optionValues.map((e) => OptionValue.fromMap(e)).toList(),
       id: map['id'] as String,
       name: map['name'] as String,
       caption: map['caption'] as String,
@@ -43,11 +44,12 @@ class SKU {
       isAvailable: map['isAvailable'] as bool,
       tags: map['tags'].cast<String>() as List<String>,
       imageUrls: map['imageUrls'].cast<String>() as List<String>,
+      color: ColorOption.fromMap(map['color'] as Map<String, dynamic>),
+      size: SizeOption.fromMap(map['size'] as Map<String, dynamic>),
     );
   }
 
   final String productId;
-  final List<OptionValue> optionValues;
   final String id;
   final String name;
   final String caption;
@@ -61,11 +63,12 @@ class SKU {
   final List<String> tags;
   final List<String> imageUrls;
   final DocumentReference? productReference;
+  final ColorOption? color;
+  final SizeOption? size;
 
   Map<String, dynamic> toMap() {
     return {
       'productId': productId,
-      'optionValues': optionValues,
       'id': id,
       'name': name,
       'caption': caption,
@@ -79,6 +82,8 @@ class SKU {
       'isAvailable': isAvailable,
       'tags': tags,
       'imageUrls': imageUrls,
+      'color': color!.toMap(),
+      'size': size!.toMap(),
     }.cast<String, dynamic>();
   }
 
@@ -115,6 +120,6 @@ class SKU {
 
   @override
   String toString() {
-    return 'SKU{productId: $productId, optionValues: ${optionValues.toString()}, id: $id, name: $name, caption: $caption, description: $description, currency: $currency, price: $price, discount: $discount, taxRate: $taxRate, inventory: $inventory, isAvailable: $isAvailable, tags: $tags, imageUrls: $imageUrls, productReference: $productReference}';
+    return 'SKU{productId: $productId, id: $id, name: $name, caption: $caption, description: $description, currency: $currency, price: $price, discount: $discount, taxRate: $taxRate, inventory: $inventory, isAvailable: $isAvailable, tags: $tags, imageUrls: $imageUrls, productReference: $productReference, color: ${color.toString()}, size: ${size.toString()}}';
   }
 }

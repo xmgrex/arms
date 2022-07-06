@@ -1,6 +1,7 @@
 import 'package:arms/src/common_widget/common_widget.dart';
 
 import 'package:arms/src/features/cart/data/cart_repository.dart';
+import 'package:arms/src/features/cart/presentation/shopping_cart/empty_cart_screen.dart';
 import 'package:arms/src/features/cart/presentation/shopping_cart/shopping_cart_item.dart';
 import 'package:arms/src/features/cart/presentation/shopping_cart/shopping_cart_items_builder.dart';
 import 'package:arms/src/features/cart/presentation/shopping_cart/shopping_cart_page_controller.dart';
@@ -14,6 +15,7 @@ import '../../../checkout/domain/payment_summary.dart';
 import '../../../checkout/presentation/checkout_screen_controller.dart';
 import '../../../checkout/presentation/checkout_screen_state.dart';
 import '../../domain/cart.dart';
+import 'components/checkout_card.dart';
 
 class ShoppingCartPage extends ConsumerWidget {
   const ShoppingCartPage({
@@ -37,7 +39,7 @@ class ShoppingCartPage extends ConsumerWidget {
       loadingWidget: const LoadingWidget(),
       isLoading: state.isLoading,
       child: Scaffold(
-        appBar: AppBar(title: const Text('Cart')),
+        appBar: AppBar(title: Text('Cart', style: TextStyles.title.bold)),
         body: AsyncValueWidget<List<CartItem>>(
           value: cartItemsListValue,
           data: (data) {
@@ -52,17 +54,18 @@ class ShoppingCartPage extends ConsumerWidget {
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,
-                    child: CheckoutButton(items: data),
+                    child: CheckoutCard(items: data),
                   ),
                 ],
               );
             } else {
-              return const Center(
-                child: SizedBox(
-                  height: 120,
-                  child: Text('Cart is Empty'),
-                ),
-              );
+              return const EmptyCartScreen();
+              //   const Center(
+              //   child: SizedBox(
+              //     height: 120,
+              //     child: Text('Cart is Empty'),
+              //   ),
+              // );
             }
           },
         ),

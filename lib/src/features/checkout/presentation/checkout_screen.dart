@@ -36,7 +36,7 @@ class CheckoutScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),
-        title: const Text('Checkout'),
+        title: Text('Checkout', style: TextStyles.title.bold),
       ),
       body: LoadingOverlay(
         loadingWidget: const LoadingWidget(),
