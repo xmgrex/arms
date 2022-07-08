@@ -1,12 +1,11 @@
-import 'package:arms/src/features/home/presentation/components/discount_banner.dart';
 import 'package:arms/src/features/home/presentation/components/special_offers.dart';
-import 'package:arms/src/features/home/presentation/home_page_app_bar.dart';
 import 'package:arms/src/utils/super_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 import 'package:arms/src/common_widget/common_widget.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../products/presentation/products_list/products_list.dart';
 import '../../products/presentation/products_list/popular_product.dart';
 
@@ -25,8 +24,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Sizes.p64,
-        title: const SearchBar(
-          hint: 'Input keywords',
+        title: SearchBar(
+          hint: S.of(context).inputKeywords,
         ),
         actions: [
           IconButton(

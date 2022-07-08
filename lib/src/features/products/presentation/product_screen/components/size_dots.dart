@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../constants/constants.dart';
 import '../../../../../utils/size_config.dart';
 import '../../../domain/size_option.dart';
@@ -28,7 +29,7 @@ class SizeDots extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Size: ${state.selectSize!.size}', style: TextStyles.body),
+            Text('${S.of(context).size}: ${state.selectSize!.size}', style: TextStyles.body,),
             Wrap(
               children: [
                 ...List.generate(options.length, (index) {

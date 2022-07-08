@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../cart/domain/cart.dart';
 
 class PlaceOrderButton extends ConsumerWidget {
@@ -21,7 +22,7 @@ class PlaceOrderButton extends ConsumerWidget {
         bottom: Sizes.p32,
       ),
       child: ScaleButton(
-        label: 'Place order',
+        label: S.of(context).placeOrder,
         onPressed: () {
           ref.read(checkoutScreenControllerProvider.notifier).placeOrder(items);
         },

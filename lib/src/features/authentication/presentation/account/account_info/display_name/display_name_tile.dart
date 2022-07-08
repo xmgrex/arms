@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../auth_notifier.dart';
 
 class DisplayNameTile extends ConsumerWidget {
@@ -18,10 +19,10 @@ class DisplayNameTile extends ConsumerWidget {
       onTap: () => context.pushNamed(AppRoute.editDisplayNameScreen.name),
       title: Text(
         firebaseUser!.displayName == null
-            ? 'No name'
+            ? S.of(context).noName
             : firebaseUser.displayName!,
       ),
-      subtitle: const Text('Name'),
+      subtitle: Text(S.of(context).name),
       trailing: const Icon(Icons.arrow_forward_ios, size: Sizes.p12),
     );
   }

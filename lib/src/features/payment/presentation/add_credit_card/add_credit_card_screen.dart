@@ -6,6 +6,8 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class AddCreditCardScreen extends ConsumerWidget {
   const AddCreditCardScreen({
     Key? key,
@@ -27,7 +29,7 @@ class AddCreditCardScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: backPageButton(context: context),
-          title: const Text('Add credit card'),
+          title: Text(S.of(context).addCreditCard, style: TextStyles.title.bold,),
           actions: [
             TextButton(
               onPressed: () async {
@@ -35,7 +37,7 @@ class AddCreditCardScreen extends ConsumerWidget {
                   context.pop();
                 });
               },
-              child: const Text('Done'),
+              child: Text(S.of(context).done),
             )
           ],
         ),
@@ -44,9 +46,9 @@ class AddCreditCardScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               gapH32,
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: Sizes.p16),
-                child: Text('Enter your card information'),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Sizes.p16),
+                child: Text(S.of(context).enterYourCardInfo),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: Sizes.p16),

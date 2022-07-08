@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class ProductPrice extends ConsumerWidget {
   const ProductPrice({
     Key? key,
@@ -25,19 +27,19 @@ class ProductPrice extends ConsumerWidget {
               horizontal: getProportionateScreenWidth(16),
             ),
             child: isDiscount
-                ? discountPrice(state.selectSKU!, colorScheme)
-                : price(state.selectSKU!),
+                ? discountPrice(state.selectSKU!, colorScheme, context)
+                : price(state.selectSKU!, context),
           );
   }
 
-  Widget price(SKU sku) {
+  Widget price(SKU sku, BuildContext context) {
     return Text.rich(
       TextSpan(
         text: sku.displayTotal(),
         style: TextStyles.title.large.copyWith(fontWeight: FontWeight.w900),
         children: <TextSpan>[
           TextSpan(
-            text: '  (tax inclusive)',
+            text: '  (${S.of(context).taxInclusive})',
             style: TextStyles.body.grey,
           ),
         ],
@@ -45,11 +47,11 @@ class ProductPrice extends ConsumerWidget {
     );
   }
 
-  Widget discountPrice(SKU sku, ColorScheme colorScheme) {
+  Widget discountPrice(SKU sku, ColorScheme colorScheme, BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        taxInclusive(sku, colorScheme),
+        taxInclusive(sku, colorScheme, context),
         // discountRate(sku),
       ],
     );
@@ -73,7 +75,7 @@ class ProductPrice extends ConsumerWidget {
     );
   }
 
-  Widget taxInclusive(SKU sku, ColorScheme colorScheme) {
+  Widget taxInclusive(SKU sku, ColorScheme colorScheme, BuildContext context) {
     return Text.rich(
       TextSpan(
         text: sku.displayTotal(),
@@ -87,7 +89,7 @@ class ProductPrice extends ConsumerWidget {
             ),
           ),
           TextSpan(
-            text: '  (tax include)',
+            text: '  (${S.of(context).taxInclusive})',
             style: TextStyles.body.grey.copyWith(
               decoration: TextDecoration.none,
             ),

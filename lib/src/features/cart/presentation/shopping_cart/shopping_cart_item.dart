@@ -8,6 +8,8 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class ShoppingCartItem extends ConsumerWidget {
   const ShoppingCartItem({
     Key? key,
@@ -106,7 +108,7 @@ class _QuantityButtonWidgetState extends ConsumerState<QuantityButtonWidget> {
             textStyle: TextStyle(
               color: Theme.of(context).colorScheme.background,
             ),
-            label: 'Delete',
+            label: S.of(context).delete,
           ),
         ],
       ),

@@ -8,6 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../common_widget/back_button.dart';
 import 'choose_address_controller.dart';
 
@@ -21,11 +22,12 @@ class ChooseAddressScreen extends ConsumerWidget {
     final appUser = ref.watch(appUserStateProvider);
     final state = ref.watch(chooseAddressControllerProvider);
     final controller = ref.watch(chooseAddressControllerProvider.notifier);
+    final s = S.of(context);
 
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),
-        title: Text('Choose address', style: TextStyles.title.bold),
+        title: Text(s.chooseAddress, style: TextStyles.title.bold),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -33,7 +35,7 @@ class ChooseAddressScreen extends ConsumerWidget {
           children: [
             ListTile(
               onTap: () => context.pushNamed(AppRoute.addAddressScreen.name),
-              title: const Text('Add new address'),
+              title: Text(s.addNewAddress),
               trailing: const Icon(Icons.arrow_forward_ios, size: Sizes.p16),
             ),
             ChooseAddressListViewBuilder(
@@ -56,7 +58,7 @@ class ChooseAddressScreen extends ConsumerWidget {
                 color: Theme.of(context).colorScheme.onSurface,
               ),
               minLeadingWidth: 20.0,
-              title: const Text('User current location'),
+              title: Text(s.userCurrentLocation),
             ),
           ],
         ),

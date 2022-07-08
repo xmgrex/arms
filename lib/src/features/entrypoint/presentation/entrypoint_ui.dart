@@ -7,31 +7,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../utils/size_config.dart';
 import '../../cart/presentation/shopping_cart/shopping_cart_page.dart';
+import '../../top_level_providers.dart';
 
-const itemData = <Map<String, dynamic>>[
-  {
-    'icon': SuperIcons.home,
-    'fillIcon': SuperBoldIcons.home,
-    'label': 'Home',
-  },
-  {
-    'icon': XIcons.cartOutline,
-    'fillIcon': XIcons.cart,
-    'label': 'Cart',
-  },
-  {
-    'icon': SuperIcons.paper,
-    'fillIcon': SuperBoldIcons.paper,
-    'label': 'Order',
-  },
-  {
-    'icon': SuperIcons.profile,
-    'fillIcon': SuperBoldIcons.profile,
-    'label': 'Account',
-  },
-];
+List<Map<String, dynamic>> _itemData(BuildContext context) {
+  return [
+    {
+      'icon': SuperIcons.home,
+      'fillIcon': SuperBoldIcons.home,
+      'label': S.of(context).home,
+    },
+    {
+      'icon': XIcons.cartOutline,
+      'fillIcon': XIcons.cart,
+      'label': S.of(context).cart,
+    },
+    {
+      'icon': SuperIcons.paper,
+      'fillIcon': SuperBoldIcons.paper,
+      'label': S.of(context).order,
+    },
+    {
+      'icon': SuperIcons.profile,
+      'fillIcon': SuperBoldIcons.profile,
+      'label': S.of(context).account,
+    },
+  ];
+}
 
 class EntryPointUI extends ConsumerStatefulWidget {
   const EntryPointUI({
@@ -43,7 +47,6 @@ class EntryPointUI extends ConsumerStatefulWidget {
 }
 
 class _EntryPointUIState extends ConsumerState<EntryPointUI> {
-
   _handlePageSelection(int index) {
     setState(() {
       _currentPage = index;
@@ -62,10 +65,13 @@ class _EntryPointUIState extends ConsumerState<EntryPointUI> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final itemData = _itemData(context);
     return Scaffold(
       body: AnimatedIndexedStack(index: _currentPage, children: _pages),
       // IndexedStack(index: _currentPage, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: TextStyles.label.small.bold,
+        unselectedLabelStyle: TextStyles.label.small,
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentPage,
         items: [

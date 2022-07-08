@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../products/domain/sku.dart';
 
 var _quantity = 1;
@@ -34,7 +35,7 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
       height: MediaQuery.of(context).size.height * 0.8,
       widget: Scaffold(
         appBar: AppBar(
-          title: Text('Quantity', style: TextStyles.body.large),
+          title: Text(S.of(context).quantity, style: TextStyles.body.large),
           leading: gap0,
           actions: [
             IconButton(
@@ -93,7 +94,10 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Qty: $_quantity', style: TextStyles.body.bold),
+                      Text(
+                        '${S.of(context).quantity}: $_quantity',
+                        style: TextStyles.body.bold,
+                      ),
                       const Icon(Icons.arrow_drop_down_sharp)
                     ],
                   ),
@@ -108,7 +112,7 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
           gapH32,
           ScaleButton(
             height: Sizes.p48,
-            label: 'Add to cart',
+            label: S.of(context).addToCart,
             radius: 0,
             onPressed: () {
               widget.addToCart(_quantity);

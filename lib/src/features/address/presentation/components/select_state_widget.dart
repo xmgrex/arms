@@ -3,6 +3,8 @@ import 'package:country_state_city_picker/japan_state_city_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class SelectStateWidget extends StatelessWidget {
   const SelectStateWidget({
     Key? key,
@@ -24,7 +26,7 @@ class SelectStateWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Country/State/City', style: TextStyles.title),
+          Text(S.of(context).stateCity, style: TextStyles.title),
           SelectJapanState(
             initialState: initialState,
             initialCity: initialCity,

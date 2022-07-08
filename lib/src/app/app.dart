@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/i10n.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../generated/l10n.dart';
 import '../constants/constants.dart';
 import '../localizations/label_overrides.dart';
 
@@ -29,16 +30,14 @@ class MyApp extends ConsumerWidget {
       builder: (theme, darkTheme) {
         return MaterialApp.router(
           localizationsDelegates: [
+            S.delegate,
             FlutterFireUILocalizations.delegate,
             FlutterFireUIJaLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-          supportedLocales: const [
-            Locale('ja', ''),
-            Locale('en', ''),
-          ],
+          supportedLocales: S.delegate.supportedLocales,
           debugShowCheckedModeBanner: false,
           routerDelegate: goRouter.routerDelegate,
           routeInformationParser: goRouter.routeInformationParser,

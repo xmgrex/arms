@@ -2,6 +2,7 @@ import 'package:arms/src/features/checkout/presentation/checkout_screen_controll
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../address/presentation/choose_address/choose_address_list_tile.dart';
 import '../../../address/presentation/choose_address/choose_address_list_view_builder.dart';
 import '../../../top_level_providers.dart';
@@ -15,7 +16,7 @@ class DeliveringToWidget extends ConsumerWidget {
     final state = ref.watch(checkoutScreenControllerProvider);
 
     return DeliveryOptionContents(
-      title: 'Delivering to',
+      title: S.of(context).deliveryTo,
       contents: Text(
         state.deliveryOptions != null
             ? state.deliveryOptions!.address.displayFullAddress()

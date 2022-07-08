@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../routing/app_router.dart';
 
 const double defaultPadding = 16;
@@ -19,32 +20,17 @@ class EmptyWalletScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(defaultPadding),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  const SizedBox(width: 40),
-                  Column(
-                    children: [
-                      Text(
-                        "Wallet".toUpperCase(),
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
-                      const SizedBox(height: defaultPadding / 2),
-                      const Text(
-                        "Your payment methods will \nappear here",
-                        textAlign: TextAlign.center,
-                      )
-                    ],
+                  Text(
+                    "WALLET",
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
-                  SizedBox(
-                    width: 40,
-                    child: TextButton(
-                      onPressed: () {
-                        context.pushNamed(AppRoute.addCreditCardScreen.name);
-                      },
-                      child: const Icon(XIcons.add)
-                    ),
-                  )
+                  const SizedBox(height: defaultPadding / 2),
+                  Text(
+                    S.of(context).noPaymentMethod,
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),

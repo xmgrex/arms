@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../checkout_screen_controller.dart';
 import 'delivery_option_contents.dart';
 
@@ -16,7 +17,7 @@ class DeliveryWindowWidget extends ConsumerWidget {
     final state = ref.watch(checkoutScreenControllerProvider);
 
     return DeliveryOptionContents(
-      title: 'Delivery window',
+      title: S.of(context).deliveryWindow,
       contents: Text(
         state.deliveryOptions != null
             ? state.deliveryOptions!.scheduledDeliveryDate.displaySchedule()

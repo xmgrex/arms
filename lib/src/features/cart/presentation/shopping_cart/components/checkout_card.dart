@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../common_widget/common_widget.dart';
 import '../../../../../routing/app_router.dart';
 import '../../../domain/cart.dart';
@@ -33,7 +34,7 @@ class CheckoutCard extends ConsumerWidget {
             children: [
               Text.rich(
                 TextSpan(
-                  text: 'Total:\n',
+                  text: '${S.of(context).total}:\n',
                   children: [
                     TextSpan(
                       text: symbolFormatter(totalPrice.round(), items.first.currency),
@@ -46,7 +47,7 @@ class CheckoutCard extends ConsumerWidget {
               Expanded(
                 child: ScaleButton(
                   height: Sizes.p48,
-                  label: 'Check out',
+                  label: S.of(context).checkout,
                   onPressed: () {
                     context.goNamed(AppRoute.checkoutScreen.name, extra: items);
                   },

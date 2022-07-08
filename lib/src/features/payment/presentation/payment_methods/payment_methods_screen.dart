@@ -2,8 +2,11 @@ import 'package:arms/src/common_widget/common_widget.dart';
 import 'package:arms/src/features/payment/presentation/payment_methods/payment_methods_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
+import '../../../../routing/app_router.dart';
 import 'credit_card_list.dart';
 
 class PaymentMethodsScreen extends ConsumerWidget {
@@ -26,7 +29,18 @@ class PaymentMethodsScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: backPageButton(context: context),
-          title: Text('Payment methods', style: TextStyles.title.bold),
+          title: Text(
+            S.of(context).paymentMethods,
+            style: TextStyles.title.bold,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                context.pushNamed(AppRoute.addCreditCardScreen.name);
+              },
+              icon: const Icon(Icons.add),
+            ),
+          ],
         ),
         body: const CreditCardList(),
       ),

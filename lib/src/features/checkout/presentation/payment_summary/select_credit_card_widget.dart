@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../domain/payment_summary.dart';
 
 class SelectCreditCardWidget extends StatelessWidget {
@@ -16,9 +17,12 @@ class SelectCreditCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final title = paymentSummary.creditCard == null
-        ? const Text(
-            'Add credit card',
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
+        ? Text(
+            S.of(context).addPaymentMethod,
+            style: TextStyles.body.copyWith(
+              color: Colors.blue,
+              fontWeight: FontWeight.w600,
+            ),
           )
         : Text(
             '••••${paymentSummary.creditCard!.last4}',

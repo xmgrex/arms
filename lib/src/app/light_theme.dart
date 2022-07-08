@@ -1,3 +1,4 @@
+import 'package:arms/src/app/app.dart';
 import 'package:arms/src/constants/constants.dart';
 import 'package:arms/src/utils/colors.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -81,7 +82,6 @@ final lightTheme = FlexThemeData.light(
     bottomNavigationBarElevation: 8.0,
     bottomNavigationBarSelectedLabelSize: 12,
     bottomNavigationBarUnselectedLabelSize: 11,
-    bottomNavigationBarLabelTextStyle: TextStyle(fontWeight: FontWeight.w600),
     navigationBarBackgroundSchemeColor: SchemeColor.background,
     navigationRailSelectedLabelSchemeColor: SchemeColor.secondary,
     navigationRailSelectedIconSchemeColor: SchemeColor.secondary,
@@ -89,6 +89,18 @@ final lightTheme = FlexThemeData.light(
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
   // useMaterial3: true,
 ).copyWith(
+  appBarTheme: AppBarTheme(
+    titleTextStyle: TextStyles.body.bold.copyWith(
+      fontFamily: GoogleFonts.nunitoSans().fontFamily,
+      color: colorScheme().onBackground,
+    ),
+    iconTheme: IconThemeData(
+      color: colorScheme().onBackground,
+      size: 20,
+    ),
+    elevation: 0.5,
+    backgroundColor: colorScheme().onPrimary,
+  ),
   colorScheme: lightColorScheme(),
   splashColor: LightColors.onSurface.withOpacity(.25),
   inputDecorationTheme: const InputDecorationTheme(),

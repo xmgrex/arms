@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../common_widget/section_title.dart';
 import '../../../../utils/size_config.dart';
 
@@ -17,7 +18,7 @@ class SpecialOffers extends StatelessWidget {
             left: getProportionateScreenWidth(20),
           ),
           child: SectionTitle(
-            title: "Special for you",
+            title: S.of(context).specialForYou,
             press: () {},
           ),
         ),

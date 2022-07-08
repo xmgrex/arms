@@ -1,6 +1,5 @@
 import 'package:arms/src/common_widget/common_widget.dart';
 import 'package:arms/src/features/authentication/domain/app_user.dart';
-import 'package:arms/src/features/cart/presentation/shopping_cart/shopping_cart_page.dart';
 import 'package:arms/src/features/checkout/presentation/checkout_screen_controller.dart';
 import 'package:arms/src/features/checkout/presentation/checkout_screen_state.dart';
 import 'package:arms/src/features/checkout/presentation/payment_summary/payment_sunmmary_widget.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../cart/domain/cart.dart';
 
 class CheckoutScreen extends ConsumerWidget {
@@ -36,7 +36,7 @@ class CheckoutScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),
-        title: Text('Checkout', style: TextStyles.title.bold),
+        title: Text(S.of(context).checkout, style: TextStyles.title.bold),
       ),
       body: LoadingOverlay(
         loadingWidget: const LoadingWidget(),

@@ -3,6 +3,7 @@ import 'package:arms/src/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../generated/l10n.dart';
 import 'stores_grid.dart';
 
 class FeaturedStores extends ConsumerStatefulWidget {
@@ -22,7 +23,10 @@ class _FeaturedStoresState extends ConsumerState<FeaturedStores> {
       children: [
         Padding(
           padding: EdgeInsets.only(left: getProportionateScreenWidth(16)),
-          child: SectionTitle(title: 'Featured Stores', press: () {}),
+          child: SectionTitle(
+            title: S.of(context).featuredStores,
+            press: () {},
+          ),
         ),
         const StoresGrid(),
       ],

@@ -5,6 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../../generated/l10n.dart';
+
 class EditDisplayNameScreen extends ConsumerWidget {
   const EditDisplayNameScreen({
     Key? key,
@@ -15,7 +17,7 @@ class EditDisplayNameScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),
-        title: const Text('Edit name'),
+        title: Text(S.of(context).editName),
       ),
       body: Column(
         children: const [

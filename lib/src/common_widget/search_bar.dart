@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../generated/l10n.dart';
 import '../constants/constants.dart';
 import '../utils/size_config.dart';
 
@@ -48,7 +49,7 @@ class SearchBar extends StatelessWidget {
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
-              hintText: 'Search product',
+              hintText: hint ?? S.of(context).searchProducts,
               prefixIcon: Icon(
                 Icons.search,
                 color: Theme.of(context).colorScheme.outline,

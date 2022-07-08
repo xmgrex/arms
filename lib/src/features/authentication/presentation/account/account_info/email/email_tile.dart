@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../auth_notifier.dart';
 
 class EmailTile extends ConsumerWidget {
@@ -17,17 +18,17 @@ class EmailTile extends ConsumerWidget {
     return ListTile(
       onTap: () => context.pushNamed(AppRoute.editEmailScreen.name),
       title: Text(
-        firebaseUser!.email == null ? 'No email' : firebaseUser.email!,
+        firebaseUser!.email == null ? S.of(context).noEmail: firebaseUser.email!,
       ),
-      subtitle:const Text('Email'),
+      subtitle: Text(S.of(context).email),
       trailing: SizedBox(
         width: 120,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             firebaseUser.emailVerified
-                ? Text('Verified', style: TextStyles.body.success)
-                : Text('Unverified', style: TextStyles.body.error),
+                ? Text(S.of(context).verified, style: TextStyles.body.success)
+                : Text(S.of(context).unverified, style: TextStyles.body.error),
             gapW16,
             const Icon(Icons.arrow_forward_ios, size: Sizes.p12),
           ],

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
-import '../../auth_notifier.dart';
+import '../../../../../../../generated/l10n.dart';
 
 class PasswordTile extends ConsumerWidget {
   const PasswordTile({
@@ -15,7 +15,7 @@ class PasswordTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListTile(
       onTap: () => context.pushNamed(AppRoute.editPasswordScreen.name),
-      title: const Text('Edit password'),
+      title: Text(S.of(context).editPassword),
       trailing: const Icon(Icons.arrow_forward_ios, size: Sizes.p12),
     );
   }

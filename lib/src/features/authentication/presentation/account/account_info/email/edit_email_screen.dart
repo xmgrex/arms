@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../../generated/l10n.dart';
 import '../../auth_notifier.dart';
 import 'edit_email_screen_notifier.dart';
 
@@ -48,7 +49,7 @@ class EditEmailScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: backPageButton(context: context),
-          title: const Text('Edit email'),
+          title: Text(S.of(context).editEmail),
         ),
         body: Form(
           key: editEmailFormKey,
@@ -57,37 +58,37 @@ class EditEmailScreen extends ConsumerWidget {
             child: Column(
               children: [
                 _textField(
-                  label: '現在のメールアドレス',
+                  label: S.of(context).currentEmail,
                   textEditingController: currentEmailController,
                   onSubmitted: (_) => _submit(),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return '現在のメールアドレスを入力してください。';
+                      return S.of(context).pleaseEnterCurrentEmail;
                     }
                     return null;
                   },
                 ),
                 gapH8,
                 _textField(
-                  label: '新しいメールアドレス',
+                  label: S.of(context).newEmail,
                   textEditingController: newEmailController,
                   onSubmitted: (_) => _submit(),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return '現在のメールアドレスを入力してください。';
+                      return S.of(context).pleaseEnterNewEmail;
                     }
                     return null;
                   },
                 ),
                 gapH8,
                 _textField(
-                  label: 'パスワード',
+                  label: S.of(context).password,
                   textEditingController: passwordController,
                   keyboardType: TextInputType.visiblePassword,
                   onSubmitted: (_) => _submit(),
                   validator: (value) {
                     if (value!.isEmpty) {
-                      return 'パスワードを入力してください。';
+                      return S.of(context).pleaseEnterPassword;
                     }
                     return null;
                   },

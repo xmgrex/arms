@@ -11,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../checkout/domain/payment_summary.dart';
 import '../../../checkout/presentation/checkout_screen_controller.dart';
 import '../../../checkout/presentation/checkout_screen_state.dart';
@@ -39,7 +40,9 @@ class ShoppingCartPage extends ConsumerWidget {
       loadingWidget: const LoadingWidget(),
       isLoading: state.isLoading,
       child: Scaffold(
-        appBar: AppBar(title: Text('Cart', style: TextStyles.title.bold)),
+        appBar: AppBar(
+          title: Text(S.of(context).cart, style: TextStyles.title.bold),
+        ),
         body: AsyncValueWidget<List<CartItem>>(
           value: cartItemsListValue,
           data: (data) {
@@ -49,7 +52,9 @@ class ShoppingCartPage extends ConsumerWidget {
                   ShoppingCartItemsBuilder(
                     items: data,
                     itemBuilder: (_, item, index) {
-                      return ShoppingCartItem(item: item, );
+                      return ShoppingCartItem(
+                        item: item,
+                      );
                     },
                   ),
                   Align(
@@ -60,12 +65,6 @@ class ShoppingCartPage extends ConsumerWidget {
               );
             } else {
               return const EmptyCartScreen();
-              //   const Center(
-              //   child: SizedBox(
-              //     height: 120,
-              //     child: Text('Cart is Empty'),
-              //   ),
-              // );
             }
           },
         ),
@@ -90,7 +89,7 @@ class CheckoutButton extends ConsumerWidget {
     }
     return ScaleButton(
       height: Sizes.p48,
-      label: 'Check out（Sub total:'
+      label: '${S.of(context).checkout}（${S.of(context).subTotal}:'
           ' ${symbolFormatter(totalPrice.round(), items.first.currency)}）',
       radius: 0.0,
       onPressed: () {

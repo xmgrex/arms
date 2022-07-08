@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../utils/size_config.dart';
 import '../product_screen_controller.dart';
 
@@ -27,7 +28,7 @@ class ColorDots extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Color: ${state.selectColor!.color}', style: TextStyles.body),
+          Text('${S.of(context).color}: ${state.selectColor!.color}', style: TextStyles.body),
           SizedBox(
             width: double.infinity,
             child: SingleChildScrollView(

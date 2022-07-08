@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../address/domain/shipping_address.dart';
 import '../checkout_screen_controller.dart';
 import 'delivery_option_contents.dart';
@@ -19,11 +20,11 @@ class DeliveryInstructionsWidget extends ConsumerWidget {
       onTap: () {
         showSelectDeliveryInstructionModalSheet(context);
       },
-      title: 'Delivery instructions',
+      title: S.of(context).deliveryInstructions,
       contents: state.deliveryOptions == null ||
               state.deliveryOptions!.address.instruction.isEmpty
           ? Text(
-              'No delivery instructions',
+        S.of(context).noDeliveryInstructions,
               style: TextStyles.body.large.grey,
             )
           : Text(

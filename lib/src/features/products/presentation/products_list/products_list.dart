@@ -5,8 +5,8 @@ import 'package:arms/src/features/products/presentation/products_list/product_ca
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../common_widget/section_title.dart';
 import '../../../../utils/size_config.dart';
 import 'loading_shimmer_widget.dart';
@@ -28,7 +28,10 @@ class _ProductsListState extends ConsumerState<ProductsList> {
       children: [
         Padding(
           padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
-          child: SectionTitle(title: "Popular Products", press: () {}),
+          child: SectionTitle(
+            title: S.of(context).popularProducts,
+            press: () {},
+          ),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SizedBox(
@@ -37,16 +40,16 @@ class _ProductsListState extends ConsumerState<ProductsList> {
             value: productListValue,
             data: (products) {
               return products.isEmpty
-                  ? const Center(
-                      child: Text('No products found'),
+                  ? Center(
+                      child: Text(S.of(context).noProductsFound),
                     )
                   : LiveList(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: products.length,
-                    itemBuilder: (c, index, animation) {
-                      return ProductCard(product: products[index]);
-                    },
-                  );
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (c, index, animation) {
+                        return ProductCard(product: products[index]);
+                      },
+                    );
             },
             loading: () => const LoadingShimmerWidget(),
           ),

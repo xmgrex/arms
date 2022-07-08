@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
 // import '../../../../top_level_providers.dart';
+import '../../../../../../generated/l10n.dart';
 import 'display_name/display_name_tile.dart';
 
 class AccountInfoScreen extends ConsumerWidget {
@@ -20,7 +21,7 @@ class AccountInfoScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         leading: backPageButton(context: context),
-        title: Text('Account info', style: TextStyles.title.bold),
+        title: Text(S.of(context).accountInfo, style: TextStyles.title.bold),
       ),
       body: Column(
         children: [

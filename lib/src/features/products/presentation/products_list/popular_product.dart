@@ -3,6 +3,7 @@ import 'package:arms/src/features/products/domain/product.dart';
 import 'package:flutter/material.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../common_widget/section_title.dart';
 import '../../../../constants/demo_data/black_short_sleeve_shirt.dart';
 import '../../../../constants/demo_data/compression_inner_long_sleeves.dart';
@@ -21,12 +22,14 @@ class PopularProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         Padding(
           padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
-          child: SectionTitle(title: "Popular Products", press: () {}),
+          child: SectionTitle(
+            title: S.of(context).popularProducts,
+            press: () {},
+          ),
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -36,7 +39,9 @@ class PopularProducts extends StatelessWidget {
                 _p.length,
                 (index) {
                   // logger.info(_p[index].imageUrl);
-                  return ProductCard(product: _p[index]);// here by default width and height is 0
+                  return ProductCard(
+                      product:
+                          _p[index]); // here by default width and height is 0
                 },
               ),
               SizedBox(width: getProportionateScreenWidth(20)),

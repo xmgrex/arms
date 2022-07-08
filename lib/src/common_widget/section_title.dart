@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../generated/l10n.dart';
+import '../features/top_level_providers.dart';
 import '../utils/size_config.dart';
 
 class SectionTitle extends StatelessWidget {
@@ -21,9 +23,14 @@ class SectionTitle extends StatelessWidget {
         Text(title, style: TextStyles.title.bold),
         TextButton(
           onPressed: press,
-          child: const Text(
-            "See More",
-            // style: TextStyle(color: Color(0xFFBBBBBB)),
+          child: Row(
+            children: [
+              Text(
+                S.of(context).seeMore,
+                style: TextStyles.label.bold,
+              ),
+              const Icon(Icons.arrow_forward_ios, size: 10)
+            ],
           ),
         ),
       ],

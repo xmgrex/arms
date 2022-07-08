@@ -6,6 +6,7 @@ import 'package:flutterfire_ui/auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../utils/super_icons.dart';
 
 class AccountPage extends ConsumerStatefulWidget {
@@ -20,6 +21,9 @@ class AccountPage extends ConsumerStatefulWidget {
 class _AccountPageState extends ConsumerState<AccountPage> {
   @override
   Widget build(BuildContext context) {
+
+    final s = S.of(context);
+
     return SafeArea(
       bottom: false,
       child: Scaffold(
@@ -31,13 +35,13 @@ class _AccountPageState extends ConsumerState<AccountPage> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Account Settings',
+                  s.accountSettings,
                   style: TextStyles.title.large.bold,
                 ),
               ),
               _SettingsListTile(
                 icon: SuperIcons.lock,
-                title: 'Account info',
+                title: s.accountInfo,
                 onTap: () {
                   context.goNamed(AppRoute.accountInfoScreen.name);
                 },
@@ -45,7 +49,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
               divider(context),
               _SettingsListTile(
                 icon: SuperIcons.location,
-                title: 'Addresses',
+                title: s.addresses,
                 onTap: () {
                   context.goNamed(AppRoute.chooseAddressScreen.name);
                 },
@@ -53,7 +57,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
               divider(context),
               _SettingsListTile(
                 icon: SuperIcons.wallet,
-                title: 'Payment methods',
+                title: s.paymentMethods,
                 onTap: () {
                   context.goNamed(AppRoute.paymentMethodsScreen.name);
                 },
@@ -61,13 +65,13 @@ class _AccountPageState extends ConsumerState<AccountPage> {
               divider(context),
               _SettingsListTile(
                 icon: SuperIcons.bell,
-                title: 'Notifications',
+                title: s.notifications,
                 onTap: () {},
               ),
               divider(context),
               _SettingsListTile(
                 icon: XIcons.accessibility,
-                title: 'Accessibility',
+                title: s.accessibility,
                 onTap: () {
                   context.goNamed(AppRoute.accessibilitySettingsScreen.name);
                 },

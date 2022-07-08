@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
+import '../../../../../generated/l10n.dart';
 import '../components/select_state_widget.dart';
 import '../components/select_delivery_instruction_widget.dart';
 
@@ -45,25 +46,26 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
     final controller =
         ref.watch(editAddressScreenControllerProvider(widget.address).notifier);
     final state = ref.watch(editAddressScreenControllerProvider(widget.address));
+    final s = S.of(context);
     return LoadingOverlay(
       loadingWidget: const LoadingWidget(),
       isLoading: state.asyncValue.isLoading,
       child: Scaffold(
         appBar: AppBar(
           leading: backPageButton(context: context),
-          title: const Text('Add address'),
+          title: Text(s.editAddress),
         ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextInputWidget(
-                label: '氏名',
+                label: s.name,
                 textEditingController: fullNameController,
               ),
               TextInputWidget(
-                label: 'Postal code',
-                hint: 'example: 6610045',
+                label: s.postalCode,
+                hint: s.examplePostalCode,
                 keyboardType: TextInputType.number,
                 textEditingController: postalCodeController,
               ),
@@ -74,13 +76,13 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
                 onCityChanged: controller.onCityChanged,
               ),
               TextInputWidget(
-                label: 'Line1',
-                hint: 'example: line1',
+                label: s.line1,
+                hint: s.exampleLine1,
                 textEditingController: line1Controller,
               ),
               TextInputWidget(
-                label: 'Line2',
-                hint: 'example: line2',
+                label: s.line2,
+                hint: s.exampleLine2,
                 textEditingController: line2Controller,
               ),
               SelectDeliveryInstructionWidget(
@@ -93,7 +95,7 @@ class _EditAddressScreenState extends ConsumerState<EditAddressScreen> {
               Padding(
                 padding: const EdgeInsets.all(Sizes.p16),
                 child: ScaleButton(
-                  label: 'Edit address',
+                  label: s.editAddress,
                   radius: Sizes.p4,
                   onPressed: () async {
                     await controller.editShippingAddress().then((_) {

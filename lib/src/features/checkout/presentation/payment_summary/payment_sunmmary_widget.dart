@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../cart/domain/cart.dart';
 import '../../domain/payment_summary.dart';
 import '../checkout_screen_controller.dart';
@@ -27,7 +28,10 @@ class PaymentSummaryWidget extends ConsumerWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Text('Payment summary', style: TextStyles.title.bold),
+          child: Text(
+            S.of(context).paymentSummary,
+            style: TextStyles.title.bold,
+          ),
         ),
         SelectCreditCardWidget(paymentSummary: paymentSummary!),
         AmountWidget(
