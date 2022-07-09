@@ -35,7 +35,7 @@ class _ProductsListState extends ConsumerState<ProductsList> {
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SizedBox(
-          height: 193,
+          height: 194,
           child: AsyncValueWidget<List<Product>>(
             value: productListValue,
             data: (products) {
