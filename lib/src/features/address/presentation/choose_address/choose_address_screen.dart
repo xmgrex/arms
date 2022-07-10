@@ -1,9 +1,11 @@
 import 'package:arms/src/common_widget/common_widget.dart';
+import 'package:arms/src/constants/constants.dart';
 import 'package:arms/src/features/address/presentation/choose_address/choose_address_list_tile.dart';
 import 'package:arms/src/features/address/presentation/choose_address/choose_address_list_view_builder.dart';
 import 'package:arms/src/features/top_level_providers.dart';
 import 'package:arms/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:x_kit/x_kit.dart';
@@ -38,6 +40,7 @@ class ChooseAddressScreen extends ConsumerWidget {
               title: Text(s.addNewAddress),
               trailing: const Icon(Icons.arrow_forward_ios, size: Sizes.p16),
             ),
+            const Divider(),
             ChooseAddressListViewBuilder(
               addresses: appUser != null ? appUser.addresses : [],
               itemBuilder: (_, address, index) {
@@ -51,15 +54,27 @@ class ChooseAddressScreen extends ConsumerWidget {
                 );
               },
             ),
-            ListTile(
-              onTap: () {},
-              leading: Icon(
-                XIcons.location,
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-              minLeadingWidth: 20.0,
-              title: Text(s.userCurrentLocation),
-            ),
+            // Card(
+            //   margin: const EdgeInsets.all(16.0),
+            //   color: Theme.of(context).colorScheme.tertiary,
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(6.0)
+            //   ),
+            //   child: ListTile(
+            //     onTap: () {},
+            //     leading: Icon(
+            //       IconlyBold.location,
+            //       color: Theme.of(context).colorScheme.onSurface,
+            //     ),
+            //     minLeadingWidth: 20.0,
+            //     title:
+            //         Text(s.userCurrentLocation, style: TextStyles.label.large),
+            //     trailing: Icon(
+            //       Icons.arrow_forward_ios_rounded,
+            //       size: 16,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

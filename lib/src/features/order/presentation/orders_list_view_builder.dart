@@ -1,4 +1,5 @@
 import 'package:arms/src/common_widget/common_widget.dart';
+import 'package:arms/src/constants/constants.dart';
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class OrdersListViewBuilder extends StatelessWidget {
               return itemBuilder(context, orders[i], i);
             },
             separatorBuilder: (context, index) {
-              return divider(context, padding: 16.0);
+              return const Divider(indent: indent, endIndent: indent);
             },
           );
   }

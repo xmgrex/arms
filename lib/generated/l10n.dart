@@ -610,51 +610,141 @@ class S {
     );
   }
 
-  /// `State/City`
-  String get stateCity {
+  /// `Administrative area`
+  String get administrativeArea {
     return Intl.message(
-      'State/City',
-      name: 'stateCity',
+      'Administrative area',
+      name: 'administrativeArea',
       desc: '',
       args: [],
     );
   }
 
-  /// `Line1`
+  /// `例: 東京都`
+  String get exampleAdministrativeArea {
+    return Intl.message(
+      '例: 東京都',
+      name: 'exampleAdministrativeArea',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Locality`
+  String get locality {
+    return Intl.message(
+      'Locality',
+      name: 'locality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `example: 〇〇City〇〇Town`
+  String get exampleLocality {
+    return Intl.message(
+      'example: 〇〇City〇〇Town',
+      name: 'exampleLocality',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Street`
+  String get street {
+    return Intl.message(
+      'Street',
+      name: 'street',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `example: 1-2-3`
+  String get exampleStreet {
+    return Intl.message(
+      'example: 1-2-3',
+      name: 'exampleStreet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Building name/Company Name(optional)`
   String get line1 {
     return Intl.message(
-      'Line1',
+      'Building name/Company Name(optional)',
       name: 'line1',
       desc: '',
       args: [],
     );
   }
 
-  /// `example: line1`
+  /// `example: 〇〇マンション`
   String get exampleLine1 {
     return Intl.message(
-      'example: line1',
+      'example: 〇〇マンション',
       name: 'exampleLine1',
       desc: '',
       args: [],
     );
   }
 
-  /// `Line2`
+  /// `Room number(optional)`
   String get line2 {
     return Intl.message(
-      'Line2',
+      'Room number(optional)',
       name: 'line2',
       desc: '',
       args: [],
     );
   }
 
-  /// `example: line2`
+  /// `example: 123`
   String get exampleLine2 {
     return Intl.message(
-      'example: line2',
+      'example: 123',
       name: 'exampleLine2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your name.`
+  String get nameFromValidator {
+    return Intl.message(
+      'Please enter your name.',
+      name: 'nameFromValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter postal code.`
+  String get postalCodeFromValidator {
+    return Intl.message(
+      'Please enter postal code.',
+      name: 'postalCodeFromValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter locality.`
+  String get localityFromValidator {
+    return Intl.message(
+      'Please enter locality.',
+      name: 'localityFromValidator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter sub locality.`
+  String get subLocalityFromValidator {
+    return Intl.message(
+      'Please enter sub locality.',
+      name: 'subLocalityFromValidator',
       desc: '',
       args: [],
     );

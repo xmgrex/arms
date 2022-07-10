@@ -22,7 +22,7 @@ class AmountWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          divider(context),
+          const Divider(),
           gapH8,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +48,7 @@ class AmountWidget extends StatelessWidget {
               ),
             ],
           ),
-          divider(context, height: Sizes.p32),
+          const Divider(height: Sizes.p32),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

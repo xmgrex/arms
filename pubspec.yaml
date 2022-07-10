@@ -109,9 +109,11 @@ dependencies:
   flutter_local_notifications: ^9.6.1
 
   #https://pub.dev/packages/geolocator
-  geolocator: ^8.2.0
+  geolocator: ^9.0.0
   #https://pub.dev/packages/geocoding
   geocoding: ^2.0.4
+  #https://pub.dev/packages/google_maps_flutter
+  google_maps_flutter: ^2.1.8
   #https://pub.dev/packages/animate_do
   animate_do: ^2.1.0
   #https://pub.dev/packages/collection

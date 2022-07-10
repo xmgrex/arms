@@ -89,6 +89,12 @@ final lightTheme = FlexThemeData.light(
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
   // useMaterial3: true,
 ).copyWith(
+  dividerColor: colorScheme().outline.withOpacity(.5),
+  dividerTheme: DividerThemeData(
+    space: 1,
+    color: colorScheme().outline.withOpacity(.5),
+    thickness: .5,
+  ),
   appBarTheme: AppBarTheme(
     titleTextStyle: TextStyles.body.bold.copyWith(
       fontFamily: GoogleFonts.nunitoSans().fontFamily,

@@ -16,6 +16,8 @@ const kAnimationDuration = Duration(milliseconds: 300);
 
 const gap0 = SizedBox();
 
+const indent = 16.0;
+
 class Constants {
   static const deliveryFee = 210.0;
 

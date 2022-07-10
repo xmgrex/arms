@@ -4,6 +4,7 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../constants/constants.dart';
 import '../../domain/credit_card.dart';
 
 class CreditCardsListViewBuilder extends StatelessWidget {
@@ -31,7 +32,7 @@ class CreditCardsListViewBuilder extends StatelessWidget {
         ),
         LiveList(
           separatorBuilder: (context, index) {
-            return divider(context, padding: 16.0);
+            return const Divider(indent: indent, endIndent: indent);
           },
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

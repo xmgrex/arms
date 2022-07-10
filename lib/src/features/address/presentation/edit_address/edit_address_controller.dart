@@ -7,8 +7,11 @@ import '../../data/address_repository.dart';
 import '../../domain/shipping_address.dart';
 import 'edit_address_screen_state.dart';
 
-final editAddressScreenControllerProvider = StateNotifierProvider.autoDispose.family<
-    EditAddressScreenController, EditAddressScreenState, ShippingAddress>(
+final editAddressScreenFormKey = GlobalKey<FormState>();
+
+final editAddressScreenControllerProvider = StateNotifierProvider.autoDispose
+    .family<EditAddressScreenController, EditAddressScreenState,
+        ShippingAddress>(
   (ref, address) {
     return EditAddressScreenController(address, ref.read);
   },
@@ -21,10 +24,14 @@ class EditAddressScreenController
           asyncValue: const AsyncValue.data(null),
           shippingAddress: address,
         )) {
-    fullNameController.text = state.shippingAddress!.fullName;
-    postalCodeController.text = state.shippingAddress!.postalCode;
-    line1Controller.text = state.shippingAddress!.line1;
-    line2Controller.text = state.shippingAddress!.line2;
+    fullNameController.text = address.fullName;
+    postalCodeController.text = address.postalCode;
+    localityController.text = address.locality;
+    subLocalityController.text = address.subLocality;
+    streetController.text = address.street;
+    line1Controller.text = address.line1;
+    line2Controller.text = address.line2;
+    instruction = convertToDeliveryInstruction(address.instruction);
 
     fullNameController.addListener(() {
       state = state.copyWith(
@@ -37,6 +44,20 @@ class EditAddressScreenController
       state = state.copyWith(
         shippingAddress: state.shippingAddress?.copyWith(
           postalCode: postalCodeController.text,
+        ),
+      );
+    });
+    localityController.addListener(() {
+      state = state.copyWith(
+        shippingAddress: state.shippingAddress?.copyWith(
+          locality: localityController.text,
+        ),
+      );
+    });
+    streetController.addListener(() {
+      state = state.copyWith(
+        shippingAddress: state.shippingAddress?.copyWith(
+          street: streetController.text,
         ),
       );
     });
@@ -59,6 +80,9 @@ class EditAddressScreenController
   final Reader _read;
   final fullNameController = TextEditingController();
   final postalCodeController = TextEditingController();
+  final localityController = TextEditingController();
+  final subLocalityController = TextEditingController();
+  final streetController = TextEditingController();
   final line1Controller = TextEditingController();
   final line2Controller = TextEditingController();
   var instruction = DeliveryInstruction.noSetup;
@@ -66,7 +90,7 @@ class EditAddressScreenController
   void onStateChanged(String value) {
     state = state.copyWith(
       shippingAddress: state.shippingAddress?.copyWith(
-        state: value,
+        administrativeArea: value,
       ),
     );
   }
@@ -74,7 +98,7 @@ class EditAddressScreenController
   void onCityChanged(String value) {
     state = state.copyWith(
       shippingAddress: state.shippingAddress?.copyWith(
-        city: value,
+        locality: value,
       ),
     );
   }
@@ -89,30 +113,34 @@ class EditAddressScreenController
   }
 
   Future<void> editShippingAddress() async {
-    state = state.copyWith(asyncValue: const AsyncValue.loading());
-    final user = _read(appUserStateProvider);
+    if (editAddressScreenFormKey.currentState!.validate()) {
+      state = state.copyWith(asyncValue: const AsyncValue.loading());
+      final user = _read(appUserStateProvider);
 
-    var addresses = <ShippingAddress>[];
-    addresses = user!.addresses;
-    final index = addresses.indexWhere((e) {
-      return e.id == state.shippingAddress!.id;
-    });
-    addresses[index] = state.shippingAddress!;
-    final afterUser = user.copyWith(addresses: addresses);
-
-    final result = await AsyncValue.guard(() async {
-      await _read(addressRepositoryProvider)
-          .editShippingAddress(afterUser)
-          .then((_) {
-        fullNameController.clear();
-        postalCodeController.clear();
-        line1Controller.clear();
-        line2Controller.clear();
-        instruction = DeliveryInstruction.noSetup;
+      var addresses = <ShippingAddress>[];
+      addresses = user!.addresses;
+      final index = addresses.indexWhere((e) {
+        return e.id == state.shippingAddress!.id;
       });
-      await _read(sharedPrefsManagerProvider)
-          .setDefaultAddress(state.shippingAddress!);
-    });
-    state = state.copyWith(asyncValue: result);
+      addresses[index] = state.shippingAddress!;
+      final afterUser = user.copyWith(addresses: addresses);
+
+      final result = await AsyncValue.guard(() async {
+        await _read(addressRepositoryProvider)
+            .editShippingAddress(afterUser)
+            .then((_) {
+          fullNameController.clear();
+          postalCodeController.clear();
+          localityController.clear();
+          streetController.clear();
+          line1Controller.clear();
+          line2Controller.clear();
+          instruction = DeliveryInstruction.noSetup;
+        });
+        await _read(sharedPrefsManagerProvider)
+            .setDefaultAddress(state.shippingAddress!);
+      });
+      state = state.copyWith(asyncValue: result);
+    }
   }
 }

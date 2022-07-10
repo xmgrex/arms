@@ -36,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add payment method"),
         "addToCart": MessageLookupByLibrary.simpleMessage("Add to cart"),
         "addresses": MessageLookupByLibrary.simpleMessage("Addresses"),
+        "administrativeArea":
+            MessageLookupByLibrary.simpleMessage("Administrative area"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartIsEmpty": MessageLookupByLibrary.simpleMessage("Cart is empty."),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
@@ -61,17 +63,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterYourCardInfo":
             MessageLookupByLibrary.simpleMessage("Enter your card information"),
-        "exampleLine1": MessageLookupByLibrary.simpleMessage("example: line1"),
-        "exampleLine2": MessageLookupByLibrary.simpleMessage("example: line2"),
+        "exampleAdministrativeArea":
+            MessageLookupByLibrary.simpleMessage("例: 東京都"),
+        "exampleLine1":
+            MessageLookupByLibrary.simpleMessage("example: 〇〇マンション"),
+        "exampleLine2": MessageLookupByLibrary.simpleMessage("example: 123"),
+        "exampleLocality":
+            MessageLookupByLibrary.simpleMessage("example: 〇〇City〇〇Town"),
         "examplePostalCode":
             MessageLookupByLibrary.simpleMessage("example: 0001111"),
+        "exampleStreet": MessageLookupByLibrary.simpleMessage("example: 1-2-3"),
         "featuredStores":
             MessageLookupByLibrary.simpleMessage("Featured Stores"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "inputKeywords": MessageLookupByLibrary.simpleMessage("Input keywords"),
-        "line1": MessageLookupByLibrary.simpleMessage("Line1"),
-        "line2": MessageLookupByLibrary.simpleMessage("Line2"),
+        "line1": MessageLookupByLibrary.simpleMessage(
+            "Building name/Company Name(optional)"),
+        "line2": MessageLookupByLibrary.simpleMessage("Room number(optional)"),
+        "locality": MessageLookupByLibrary.simpleMessage("Locality"),
+        "localityFromValidator":
+            MessageLookupByLibrary.simpleMessage("Please enter locality."),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nameFromValidator":
+            MessageLookupByLibrary.simpleMessage("Please enter your name."),
         "newEmail": MessageLookupByLibrary.simpleMessage("New email address"),
         "noDeliveryInstructions":
             MessageLookupByLibrary.simpleMessage("No delivery instructions"),
@@ -100,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "popularProducts":
             MessageLookupByLibrary.simpleMessage("Popular Products"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal code"),
+        "postalCodeFromValidator":
+            MessageLookupByLibrary.simpleMessage("Please enter postal code."),
         "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
         "searchProducts":
             MessageLookupByLibrary.simpleMessage("Search products"),
@@ -107,7 +123,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "size": MessageLookupByLibrary.simpleMessage("Size"),
         "specialForYou":
             MessageLookupByLibrary.simpleMessage("Special for you"),
-        "stateCity": MessageLookupByLibrary.simpleMessage("State/City"),
+        "street": MessageLookupByLibrary.simpleMessage("Street"),
+        "subLocalityFromValidator":
+            MessageLookupByLibrary.simpleMessage("Please enter sub locality."),
         "subTotal": MessageLookupByLibrary.simpleMessage("Sub total"),
         "taxInclusive": MessageLookupByLibrary.simpleMessage("tax inclusive"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),

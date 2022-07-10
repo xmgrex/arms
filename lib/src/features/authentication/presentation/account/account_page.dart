@@ -46,7 +46,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
                   context.goNamed(AppRoute.accountInfoScreen.name);
                 },
               ),
-              divider(context),
+              const Divider(),
               _SettingsListTile(
                 icon: SuperIcons.location,
                 title: s.addresses,
@@ -54,7 +54,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
                   context.goNamed(AppRoute.chooseAddressScreen.name);
                 },
               ),
-              divider(context),
+              const Divider(),
               _SettingsListTile(
                 icon: SuperIcons.wallet,
                 title: s.paymentMethods,
@@ -62,13 +62,13 @@ class _AccountPageState extends ConsumerState<AccountPage> {
                   context.goNamed(AppRoute.paymentMethodsScreen.name);
                 },
               ),
-              divider(context),
+              const Divider(),
               _SettingsListTile(
                 icon: SuperIcons.bell,
                 title: s.notifications,
                 onTap: () {},
               ),
-              divider(context),
+              const Divider(),
               _SettingsListTile(
                 icon: XIcons.accessibility,
                 title: s.accessibility,
@@ -76,7 +76,7 @@ class _AccountPageState extends ConsumerState<AccountPage> {
                   context.goNamed(AppRoute.accessibilitySettingsScreen.name);
                 },
               ),
-              divider(context),
+              const Divider(),
               const Center(
                 child: Padding(
                   padding: EdgeInsets.only(top: 64.0),

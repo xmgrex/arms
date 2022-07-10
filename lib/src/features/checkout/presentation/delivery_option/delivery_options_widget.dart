@@ -25,9 +25,9 @@ class DeliveryOptionsWidget extends ConsumerWidget {
         children: [
           Text(S.of(context).deliveryOptions, style: TextStyles.title.bold),
           const DeliveringToWidget(),
-          divider(context),
+          const Divider(),
           const DeliveryInstructionsWidget(),
-          divider(context),
+          const Divider(),
           const DeliveryWindowWidget()
         ],
       ),

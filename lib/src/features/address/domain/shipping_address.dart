@@ -5,26 +5,20 @@ enum DeliveryInstruction {
   entrance,
   homeDeliveryBox,
   gasMeterBox,
-  bicycleBasket,
   garage,
-  inBuildingReceptionistOrCaretaker,
   noUseOfDeliveryService,
 }
 
 String displayDeliveryInstruction(DeliveryInstruction instruction) {
   switch (instruction) {
     case DeliveryInstruction.entrance:
-      return '玄関';
+      return '玄関先に置く';
     case DeliveryInstruction.homeDeliveryBox:
       return '宅配ボックス';
     case DeliveryInstruction.gasMeterBox:
       return 'ガスメーターボックス';
-    case DeliveryInstruction.bicycleBasket:
-      return '自転車のカゴ';
     case DeliveryInstruction.garage:
       return '車庫';
-    case DeliveryInstruction.inBuildingReceptionistOrCaretaker:
-      return '建物内受付/管理人';
     case DeliveryInstruction.noUseOfDeliveryService:
       return '置き配を利用しない';
     case DeliveryInstruction.noSetup:
@@ -34,18 +28,14 @@ String displayDeliveryInstruction(DeliveryInstruction instruction) {
 
 DeliveryInstruction convertToDeliveryInstruction(String instruction) {
   switch (instruction) {
-    case '玄関':
+    case '玄関先に置く':
       return DeliveryInstruction.entrance;
     case '宅配ボックス':
       return DeliveryInstruction.homeDeliveryBox;
     case 'ガスメーターボックス':
       return DeliveryInstruction.gasMeterBox;
-    case '自転車のカゴ':
-      return DeliveryInstruction.bicycleBasket;
     case '車庫':
       return DeliveryInstruction.garage;
-    case '建物内受付/管理人':
-      return DeliveryInstruction.inBuildingReceptionistOrCaretaker;
     case '置き配を利用しない':
       return DeliveryInstruction.noUseOfDeliveryService;
     case '設定なし':
@@ -64,8 +54,10 @@ class ShippingAddress {
     required this.instruction,
     required this.postalCode,
     required this.country,
-    required this.state,
-    required this.city,
+    required this.administrativeArea,
+    required this.locality,
+    required this.subLocality,
+    required this.street,
     required this.line1,
     required this.line2,
   });
@@ -79,8 +71,10 @@ class ShippingAddress {
       instruction: map['instruction'] as String,
       postalCode: map['postalCode'] as String,
       country: map['country'] as String,
-      state: map['state'] as String,
-      city: map['city'] as String,
+      administrativeArea: map['administrativeArea'] as String,
+      locality: map['locality'] as String,
+      subLocality: map['subLocality'] as String,
+      street: map['street'] as String,
       line1: map['line1'] as String,
       line2: map['line2'] as String,
     );
@@ -93,8 +87,10 @@ class ShippingAddress {
       instruction: '',
       postalCode: '',
       country: '',
-      state: '',
-      city: '',
+      administrativeArea: '',
+      locality: '',
+      subLocality: '',
+      street: '',
       line1: '',
       line2: '',
     );
@@ -107,8 +103,10 @@ class ShippingAddress {
   final String instruction;
   final String postalCode;
   final String country;
-  final String state;
-  final String city;
+  final String administrativeArea;//都道府県
+  final String locality;//市区郡町村
+  final String subLocality;//丁目、番地
+  final String street;//市区郡町村&丁目、番地
   final String line1;
   final String line2;
 
@@ -121,8 +119,10 @@ class ShippingAddress {
       'instruction': instruction,
       'postalCode': postalCode,
       'country': country,
-      'state': state,
-      'city': city,
+      'administrativeArea': administrativeArea,
+      'locality': locality,
+      'subLocality': subLocality,
+      'street': street,
       'line1': line1,
       'line2': line2,
     };
@@ -136,8 +136,10 @@ class ShippingAddress {
     String? instruction,
     String? postalCode,
     String? country,
-    String? state,
-    String? city,
+    String? administrativeArea,
+    String? locality,
+    String? subLocality,
+    String? street,
     String? line1,
     String? line2,
   }) {
@@ -149,24 +151,27 @@ class ShippingAddress {
       instruction: instruction ?? this.instruction,
       postalCode: postalCode ?? this.postalCode,
       country: country ?? this.country,
-      state: state ?? this.state,
-      city: city ?? this.city,
+      administrativeArea: administrativeArea ?? this.administrativeArea,
+      locality: locality ?? this.locality,
+      subLocality: subLocality ?? this.subLocality,
+      street: street ?? this.street,
       line1: line1 ?? this.line1,
       line2: line2 ?? this.line2,
     );
   }
 
+
   @override
   String toString() {
-    return 'Location{latitude: $latitude, longitude: $longitude, fullName: $fullName, instruction: $instruction, postalCode: $postalCode, country: $country, city: $city, state: $state, line1: $line1, line2: $line2}';
+    return 'ShippingAddress{latitude: $latitude, longitude: $longitude, id: $id, fullName: $fullName, instruction: $instruction, postalCode: $postalCode, country: $country, locality: $locality, subLocality: $subLocality, street: $street, line1: $line1, line2: $line2}';
   }
 
   String displayAddress() {
-    return '$state$city$line1$line2';
+    return '$locality$subLocality$line1$line2';
   }
 
   String displayFullAddress() {
-    return '〒$postalCode $state$city$line1$line2, $fullName';
+    return '〒$postalCode $administrativeArea$locality$subLocality$street$line1$line2, $fullName';
   }
 }
 

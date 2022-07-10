@@ -8,12 +8,17 @@ class TextInputWidget extends StatelessWidget {
     required this.textEditingController,
     this.hint,
     this.keyboardType,
+    this.validator,
+    this.initialValue,
   }) : super(key: key);
 
   final String label;
   final String? hint;
   final TextEditingController textEditingController;
   final TextInputType? keyboardType;
+  final FormFieldValidator<String>? validator;
+  final String? initialValue;
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,17 +32,17 @@ class TextInputWidget extends StatelessWidget {
         children: [
           Text(label, style: TextStyles.title),
           TextFormField(
+            initialValue: initialValue,
+            validator: validator,
             maxLines: 1,
             keyboardType: keyboardType,
             controller: textEditingController,
             decoration: InputDecoration(
               hintText: hint,
               contentPadding: const EdgeInsets.symmetric(horizontal: Sizes.p8),
-              border: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
-              ),
+              border: InputBorder.none,
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.outline.withOpacity(.18)
             ),
           ),
         ],

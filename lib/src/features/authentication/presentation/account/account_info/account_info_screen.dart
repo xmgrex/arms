@@ -1,4 +1,5 @@
 import 'package:arms/src/common_widget/common_widget.dart';
+import 'package:arms/src/constants/constants.dart';
 
 import 'package:arms/src/features/authentication/presentation/account/account_info/email/email_tile.dart';
 import 'package:arms/src/features/authentication/presentation/account/account_info/password/password_tile.dart';
@@ -24,12 +25,12 @@ class AccountInfoScreen extends ConsumerWidget {
         title: Text(S.of(context).accountInfo, style: TextStyles.title.bold),
       ),
       body: Column(
-        children: [
-          const EmailTile(),
-          divider(context, padding: 16.0),
-          const DisplayNameTile(),
-          divider(context, padding: 16.0),
-          const PasswordTile(),
+        children: const [
+          EmailTile(),
+          Divider(indent: indent, endIndent: indent),
+          DisplayNameTile(),
+          Divider(indent: indent, endIndent: indent),
+          PasswordTile(),
         ],
       ),
     );

@@ -70,8 +70,8 @@ class _EntryPointUIState extends ConsumerState<EntryPointUI> {
       body: AnimatedIndexedStack(index: _currentPage, children: _pages),
       // IndexedStack(index: _currentPage, children: _pages),
       bottomNavigationBar: BottomNavigationBar(
-        selectedLabelStyle: TextStyles.label.small.bold,
-        unselectedLabelStyle: TextStyles.label.small,
+        selectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
         type: BottomNavigationBarType.fixed,
         currentIndex: _currentPage,
         items: [

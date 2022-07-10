@@ -3,6 +3,8 @@ import 'package:arms/src/features/address/domain/shipping_address.dart';
 import 'package:flutter/material.dart';
 import 'package:x_kit/x_kit.dart';
 
+import '../../../../constants/constants.dart';
+
 class ChooseAddressListViewBuilder extends StatelessWidget {
   const ChooseAddressListViewBuilder({
     Key? key,
@@ -32,7 +34,7 @@ class ChooseAddressListViewBuilder extends StatelessWidget {
           return itemBuilder(context, addresses[index], index);
         },
         separatorBuilder: (BuildContext context, int index) {
-          return divider(context, padding: 16.0);
+          return const Divider(indent: indent, endIndent: indent);
         },
       ),
     );

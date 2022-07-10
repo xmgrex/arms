@@ -62,7 +62,7 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
                 },
               );
             },
-            separatorBuilder: (context, _) => divider(context),
+            separatorBuilder: (context, _) => const Divider(),
             itemCount: items.length,
           ),
         ),
@@ -101,10 +101,7 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
                       const Icon(Icons.arrow_drop_down_sharp)
                     ],
                   ),
-                  divider(
-                    context,
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+                  Divider(color: Theme.of(context).colorScheme.onBackground),
                 ],
               ),
             ),

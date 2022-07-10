@@ -26,7 +26,7 @@ class ShoppingCartItemsBuilder extends ConsumerWidget {
         return itemBuilder(context, item, index);
       },
       separatorBuilder: (_, index) {
-        return divider(context);
+        return const Divider();
       },
     );
   }
