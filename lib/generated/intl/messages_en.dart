@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "color": MessageLookupByLibrary.simpleMessage("Color"),
         "currentEmail":
             MessageLookupByLibrary.simpleMessage("Current email address"),
+        "defaultStr": MessageLookupByLibrary.simpleMessage("Default"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deliveryFee": MessageLookupByLibrary.simpleMessage("Delivery fee"),
         "deliveryInstructions":
@@ -120,6 +121,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "searchProducts":
             MessageLookupByLibrary.simpleMessage("Search products"),
         "seeMore": MessageLookupByLibrary.simpleMessage("See More"),
+        "setDefault":
+            MessageLookupByLibrary.simpleMessage("Set as default card"),
         "size": MessageLookupByLibrary.simpleMessage("Size"),
         "specialForYou":
             MessageLookupByLibrary.simpleMessage("Special for you"),

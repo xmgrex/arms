@@ -131,6 +131,9 @@ dependencies:
   flutter_iconly: ^1.0.2
   animations: ^2.0.2
 
+  #https://pub.dev/packages/dotted_line
+  dotted_line: ^3.1.0
+
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
 
-import '../../../../common_widget/common_widget.dart';
-import '../../data/payment_repository.dart';
-import '../../domain/credit_card.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../../common_widget/common_widget.dart';
+import '../../../data/payment_repository.dart';
+import '../../../domain/credit_card.dart';
 import 'credit_card_list_tile.dart';
 import 'credit_cards_list_view_builder.dart';
 
@@ -36,10 +37,10 @@ class CreditCardList extends ConsumerWidget {
                 final result = await showModalActionSheet(
                   context: context,
                   actions: [
-                    const SheetAction(label: 'Set default', key: 'default'),
-                    const SheetAction(
+                    SheetAction(label: S.of(context).setDefault, key: 'default'),
+                    SheetAction(
                       key: 'delete',
-                      label: 'Delete',
+                      label: S.of(context).delete,
                       isDestructiveAction: true,
                     ),
                   ],
@@ -53,7 +54,7 @@ class CreditCardList extends ConsumerWidget {
               creditCard: creditCard,
               trailing: nullCheckOnAppUser
                   ? isDefault
-                      ? Text('Default', style: TextStyles.body.bold.success)
+                      ? Text(S.of(context).defaultStr, style: TextStyles.body.bold.success)
                       : null
                   : null,
             );

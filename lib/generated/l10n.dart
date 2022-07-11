@@ -839,6 +839,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Default`
+  String get defaultStr {
+    return Intl.message(
+      'Default',
+      name: 'defaultStr',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set as default card`
+  String get setDefault {
+    return Intl.message(
+      'Set as default card',
+      name: 'setDefault',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

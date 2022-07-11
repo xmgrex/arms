@@ -38,8 +38,15 @@ class DeliveryInstructionsWidget extends ConsumerWidget {
 void showSelectDeliveryInstructionModalSheet(BuildContext context) {
   showHalfModalBottomSheet(
     height: MediaQuery.of(context).size.height * .5,
-    widget: const Scaffold(
-      body: SelectDeliveryInstructionModalSheetBodyWidget(),
+    widget: Scaffold(
+      appBar: AppBar(
+        title: Text(S.of(context).deliveryInstructions),
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: const SelectDeliveryInstructionModalSheetBodyWidget(),
     ),
     context: context,
   );

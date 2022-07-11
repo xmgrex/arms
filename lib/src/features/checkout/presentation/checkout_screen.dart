@@ -6,6 +6,7 @@ import 'package:arms/src/features/checkout/presentation/payment_summary/payment_
 import 'package:arms/src/features/checkout/presentation/delivery_option/delivery_options_widget.dart';
 import 'package:arms/src/features/checkout/presentation/place_order_button.dart';
 import 'package:arms/src/features/top_level_providers.dart';
+import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
@@ -42,11 +43,20 @@ class CheckoutScreen extends ConsumerWidget {
         loadingWidget: const LoadingWidget(),
         isLoading:
             ref.watch(checkoutScreenControllerProvider).asyncValue.isLoading,
-        child: ListView(
-          children: [
-            const DeliveryOptionsWidget(),
-            PaymentSummaryWidget(items: items),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const DeliveryOptionsWidget(),
+              // DottedLine(
+              //   lineThickness: 2,
+              //   dashColor:
+              //       Theme.of(context).colorScheme.outline,
+              //   dashRadius: 20,
+              // ),
+              // gapH16,
+              PaymentSummaryWidget(items: items),
+            ],
+          ),
         ),
       ),
       bottomSheet: PlaceOrderButton(items: items),

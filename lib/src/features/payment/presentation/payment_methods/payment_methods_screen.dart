@@ -7,7 +7,7 @@ import 'package:x_kit/x_kit.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../routing/app_router.dart';
-import 'credit_card_list.dart';
+import 'components/credit_card_list.dart';
 
 class PaymentMethodsScreen extends ConsumerWidget {
   const PaymentMethodsScreen({
@@ -33,16 +33,22 @@ class PaymentMethodsScreen extends ConsumerWidget {
             S.of(context).paymentMethods,
             style: TextStyles.title.bold,
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                context.pushNamed(AppRoute.addCreditCardScreen.name);
-              },
-              icon: const Icon(Icons.add),
-            ),
-          ],
+          // actions: [
+          //   IconButton(
+          //     onPressed: () {
+          //       context.pushNamed(AppRoute.addCreditCardScreen.name);
+          //     },
+          //     icon: const Icon(Icons.add),
+          //   ),
+          // ],
         ),
-        body: const CreditCardList(),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              const CreditCardList(),
+            ],
+          ),
+        ),
       ),
     );
   }

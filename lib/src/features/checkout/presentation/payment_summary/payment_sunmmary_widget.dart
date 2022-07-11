@@ -27,7 +27,7 @@ class PaymentSummaryWidget extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
             S.of(context).paymentSummary,
             style: TextStyles.title.bold,

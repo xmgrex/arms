@@ -79,5 +79,7 @@
   "noDeliveryInstructions": "配達指定なし",
   "deliveryWindow": "配達時刻",
   "deliveryFee": "送料",
-  "placeOrder": "注文を確定する"
+  "placeOrder": "注文を確定する",
+  "defaultStr": "デフォルト",
+  "setDefault": "デフォルトのカードに設定"
 }

@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "chooseAddress": MessageLookupByLibrary.simpleMessage("アドレスを選択"),
         "color": MessageLookupByLibrary.simpleMessage("カラー"),
         "currentEmail": MessageLookupByLibrary.simpleMessage("現在のメールアドレス"),
+        "defaultStr": MessageLookupByLibrary.simpleMessage("デフォルト"),
         "delete": MessageLookupByLibrary.simpleMessage("削除"),
         "deliveryFee": MessageLookupByLibrary.simpleMessage("送料"),
         "deliveryInstructions": MessageLookupByLibrary.simpleMessage("配達指定"),
@@ -102,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "quantity": MessageLookupByLibrary.simpleMessage("数量"),
         "searchProducts": MessageLookupByLibrary.simpleMessage("商品を検索"),
         "seeMore": MessageLookupByLibrary.simpleMessage("もっと見る"),
+        "setDefault": MessageLookupByLibrary.simpleMessage("デフォルトのカードに設定"),
         "size": MessageLookupByLibrary.simpleMessage("サイズ"),
         "specialForYou":
             MessageLookupByLibrary.simpleMessage("Special for you"),

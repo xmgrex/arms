@@ -79,6 +79,7 @@
   "noDeliveryInstructions": "No delivery instructions",
   "deliveryWindow": "Delivery window",
   "deliveryFee": "Delivery fee",
-  "placeOrder": "Place order"
-
+  "placeOrder": "Place order",
+  "defaultStr": "Default",
+  "setDefault": "Set as default card"
 }

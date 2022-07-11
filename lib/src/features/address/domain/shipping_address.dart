@@ -171,7 +171,7 @@ class ShippingAddress {
   }
 
   String displayFullAddress() {
-    return '〒$postalCode $administrativeArea$locality$subLocality$street$line1$line2, $fullName';
+    return '$administrativeArea$locality$subLocality$street$line1$line2\n$fullName';
   }
 }
 

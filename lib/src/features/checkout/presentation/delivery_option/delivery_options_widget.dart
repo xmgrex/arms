@@ -28,7 +28,7 @@ class DeliveryOptionsWidget extends ConsumerWidget {
           const Divider(),
           const DeliveryInstructionsWidget(),
           const Divider(),
-          const DeliveryWindowWidget()
+          // const DeliveryWindowWidget()
         ],
       ),
     );
