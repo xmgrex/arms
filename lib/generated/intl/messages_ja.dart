@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "administrativeArea": MessageLookupByLibrary.simpleMessage("都道府県"),
         "cart": MessageLookupByLibrary.simpleMessage("カート"),
         "cartIsEmpty": MessageLookupByLibrary.simpleMessage("カートが空です。"),
+        "checkOurInventoryOfOtherCars":
+            MessageLookupByLibrary.simpleMessage("他の車の在庫を確認する"),
         "checkout": MessageLookupByLibrary.simpleMessage("購入手続き"),
         "chooseAddress": MessageLookupByLibrary.simpleMessage("アドレスを選択"),
         "color": MessageLookupByLibrary.simpleMessage("カラー"),
@@ -64,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exampleStreet": MessageLookupByLibrary.simpleMessage("例: 1-2-3"),
         "featuredStores": MessageLookupByLibrary.simpleMessage("オススメ店舗"),
         "home": MessageLookupByLibrary.simpleMessage("ホーム"),
+        "inStock": MessageLookupByLibrary.simpleMessage("在庫あり"),
         "inputKeywords": MessageLookupByLibrary.simpleMessage("キーワードを入力"),
         "line1": MessageLookupByLibrary.simpleMessage("建物名/会社名(任意)"),
         "line2": MessageLookupByLibrary.simpleMessage("部屋番号(任意)"),
@@ -82,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("お支払い方法が設定されていません。"),
         "noProductsFound":
             MessageLookupByLibrary.simpleMessage("該当する商品はありません。"),
+        "noStock": MessageLookupByLibrary.simpleMessage("在庫なし"),
         "notifications": MessageLookupByLibrary.simpleMessage("通知"),
         "off": MessageLookupByLibrary.simpleMessage("OFF"),
         "order": MessageLookupByLibrary.simpleMessage("注文"),

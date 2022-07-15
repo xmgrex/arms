@@ -1,5 +1,5 @@
 import 'package:arms/src/features/top_level_providers.dart';
-import 'package:arms/src/service/shered_prefs_manager.dart';
+import 'package:arms/src/service/shared_prefs_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

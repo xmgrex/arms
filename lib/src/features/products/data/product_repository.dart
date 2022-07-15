@@ -1,9 +1,11 @@
+import 'package:arms/src/constants/dame_data.dart';
 import 'package:arms/src/constants/demo_data/black_short_sleeve_shirt.dart';
 import 'package:arms/src/constants/demo_data/blue_short_sleeve_shirt.dart';
 import 'package:arms/src/constants/demo_data/gray_short_sleeve_shirt.dart';
 import 'package:arms/src/constants/demo_data/hybrid_knit_jacket.dart';
 import 'package:arms/src/constants/demo_data/white_short_sleeve_shirt.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
 import '../../../constants/demo_data/compression_inner_long_sleeves.dart';
 import '../domain/product.dart';
 import '../domain/sku.dart';
@@ -25,6 +27,7 @@ class FakeProductsRepository {
   ];
   final List<SKU> _jacketSKUs = kHybridKnitJacketsList;
   final List<SKU> _innerSKUs = kCompressionInnerLongSleevesList;
+
   // final List<SKU> _testSKUs = kTestSKUs;
 
   List<Product> getProductsList() {
@@ -41,13 +44,13 @@ class FakeProductsRepository {
     return Future.value(_products);
   }
 
-  Future<List<SKU>> fetchSKUsList(String id) async {
+  Future<List<SKU>> fetchSKUsList(String supplierId, String productId) async {
     await Future.delayed(const Duration(seconds: 1));
-    if (id == 'Short sleeve shirt') {
+    if (productId == 'Short sleeve shirt') {
       return Future.value(_shirtSKUs);
-    } else if (id == 'Hybrid Knit Jacket') {
+    } else if (productId == 'Hybrid Knit Jacket') {
       return Future.value(_jacketSKUs);
-    } else if (id == 'Compression inner long sleeves') {
+    } else if (productId == 'Compression inner long sleeves') {
       return Future.value(_innerSKUs);
     } else {
       return Future.value(_shirtSKUs);
@@ -68,7 +71,6 @@ class FakeProductsRepository {
     return watchProductsList()
         .map((products) => products.firstWhere((product) => product.id == id));
   }
-
 }
 
 final productsRepositoryProvider = Provider<FakeProductsRepository>((ref) {
@@ -85,12 +87,6 @@ final productsListFutureProvider =
     FutureProvider.autoDispose<List<Product>>((ref) {
   final productsRepository = ref.watch(productsRepositoryProvider);
   return productsRepository.fetchProductsList();
-});
-
-final skusListFutureProvider =
-    FutureProvider.autoDispose.family<List<SKU>, String>((ref, id) {
-  final productsRepository = ref.watch(productsRepositoryProvider);
-  return productsRepository.fetchSKUsList(id);
 });
 
 final skusListStreamProvider =

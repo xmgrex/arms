@@ -36,11 +36,11 @@ class ProductPrice extends ConsumerWidget {
     return Text.rich(
       TextSpan(
         text: sku.displayTotal(),
-        style: TextStyles.title.large.copyWith(fontWeight: FontWeight.w900),
+        style: TextStyles.title.large.bold,
         children: <TextSpan>[
           TextSpan(
-            text: '  (${S.of(context).taxInclusive})',
-            style: TextStyles.body.grey,
+            text: '（${S.of(context).taxInclusive}）',
+            style: TextStyles.label.grey,
           ),
         ],
       ),
@@ -90,7 +90,7 @@ class ProductPrice extends ConsumerWidget {
           ),
           TextSpan(
             text: '  (${S.of(context).taxInclusive})',
-            style: TextStyles.body.grey.copyWith(
+            style: TextStyles.label.grey.copyWith(
               decoration: TextDecoration.none,
             ),
           ),

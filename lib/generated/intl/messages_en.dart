@@ -40,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Administrative area"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartIsEmpty": MessageLookupByLibrary.simpleMessage("Cart is empty."),
+        "checkOurInventoryOfOtherCars": MessageLookupByLibrary.simpleMessage(
+            "Check our inventory of other cars"),
         "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
         "chooseAddress": MessageLookupByLibrary.simpleMessage("Choose address"),
         "color": MessageLookupByLibrary.simpleMessage("Color"),
@@ -77,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "featuredStores":
             MessageLookupByLibrary.simpleMessage("Featured Stores"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "inStock": MessageLookupByLibrary.simpleMessage("In stock"),
         "inputKeywords": MessageLookupByLibrary.simpleMessage("Input keywords"),
         "line1": MessageLookupByLibrary.simpleMessage(
             "Building name/Company Name(optional)"),
@@ -96,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "No payment method has been set up"),
         "noProductsFound":
             MessageLookupByLibrary.simpleMessage("No products found"),
+        "noStock": MessageLookupByLibrary.simpleMessage("No stock"),
         "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
         "off": MessageLookupByLibrary.simpleMessage("OFF"),
         "order": MessageLookupByLibrary.simpleMessage("Order"),

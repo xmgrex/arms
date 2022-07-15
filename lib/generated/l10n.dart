@@ -859,6 +859,36 @@ class S {
       args: [],
     );
   }
+
+  /// `In stock`
+  String get inStock {
+    return Intl.message(
+      'In stock',
+      name: 'inStock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No stock`
+  String get noStock {
+    return Intl.message(
+      'No stock',
+      name: 'noStock',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check our inventory of other cars`
+  String get checkOurInventoryOfOtherCars {
+    return Intl.message(
+      'Check our inventory of other cars',
+      name: 'checkOurInventoryOfOtherCars',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

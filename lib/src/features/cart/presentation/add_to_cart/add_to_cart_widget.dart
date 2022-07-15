@@ -106,7 +106,7 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
               ),
             ),
           ),
-          gapH32,
+          gapH24,
           ScaleButton(
             height: Sizes.p48,
             label: S.of(context).addToCart,
@@ -115,7 +115,6 @@ class _AddToCartWidgetState extends ConsumerState<AddToCartWidget> {
               widget.addToCart(_quantity);
             },
           ),
-          gapH48,
         ],
       ),
     );

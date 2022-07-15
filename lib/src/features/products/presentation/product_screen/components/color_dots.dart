@@ -22,13 +22,16 @@ class ColorDots extends ConsumerWidget {
     final state = ref.watch(productScreenControllerProvider);
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: getProportionateScreenHeight(8),
+        vertical: getProportionateScreenHeight(4),
         horizontal: getProportionateScreenWidth(16),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('${S.of(context).color}: ${state.selectColor!.color}', style: TextStyles.body),
+          Text(
+            '${S.of(context).color}: ${state.selectColor!.color}',
+            style: TextStyles.body,
+          ),
           SizedBox(
             width: double.infinity,
             child: SingleChildScrollView(

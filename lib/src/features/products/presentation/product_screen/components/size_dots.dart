@@ -45,7 +45,6 @@ class SizeDots extends ConsumerWidget {
                       }
                     }
                   }
-                  logger.finest(state.selectSize);
                   return SizeDot(
                     size: option.value,
                     isSelected: state.selectSize == option,

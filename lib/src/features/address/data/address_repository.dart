@@ -1,6 +1,6 @@
 import 'package:arms/src/features/authentication/domain/location.dart';
 import 'package:arms/src/service/firebase/firestore.dart';
-import 'package:arms/src/service/shered_prefs_manager.dart';
+import 'package:arms/src/service/shared_prefs_manager.dart';
 import 'package:firebase_services/firestore_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;

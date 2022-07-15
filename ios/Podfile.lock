@@ -917,27 +917,27 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - Stripe (22.4.0):
-    - Stripe/Stripe3DS2 (= 22.4.0)
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - Stripe/Stripe3DS2 (22.4.0):
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
+  - Stripe (22.5.1):
+    - Stripe/Stripe3DS2 (= 22.5.1)
+    - StripeApplePay (= 22.5.1)
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
+  - Stripe/Stripe3DS2 (22.5.1):
+    - StripeApplePay (= 22.5.1)
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
   - stripe_ios (0.0.1):
     - Flutter
-    - Stripe (~> 22.4.0)
-    - StripeFinancialConnections (~> 22.4.0)
-  - StripeApplePay (22.4.0):
-    - StripeCore (= 22.4.0)
-  - StripeCore (22.4.0)
-  - StripeFinancialConnections (22.4.0):
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - StripeUICore (22.4.0):
-    - StripeCore (= 22.4.0)
+    - Stripe (~> 22.5.1)
+    - StripeFinancialConnections (~> 22.5.1)
+  - StripeApplePay (22.5.1):
+    - StripeCore (= 22.5.1)
+  - StripeCore (22.5.1)
+  - StripeFinancialConnections (22.5.1):
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
+  - StripeUICore (22.5.1):
+    - StripeCore (= 22.5.1)
   - twitter_login (0.0.1):
     - Flutter
 
@@ -1120,12 +1120,12 @@ SPEC CHECKSUMS:
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sign_in_with_apple: f3bf75217ea4c2c8b91823f225d70230119b8440
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  Stripe: a925dfa9a7e51aa8f782f428abc10cb828b45a85
-  stripe_ios: ba9cf4ad304acf74500b0a2cdd46b519173388c6
-  StripeApplePay: 369857bafe8baf02e31b47478db1574febd2a2f3
-  StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
-  StripeFinancialConnections: 269658b79f639c2d6b7d513235d469418b04c2dd
-  StripeUICore: a8e24a6c91a5c99075c7a490d45695fb912876e8
+  Stripe: 2b2decd03146e08a350960966d41f3028c2eac29
+  stripe_ios: e94186250816de030881ced3399154eab186e439
+  StripeApplePay: b14f06ac6fc24b56704c1e598149ed0cc45e166f
+  StripeCore: 4833738f2ca4336712f279f3c2867a0a7eb67c93
+  StripeFinancialConnections: 982115b82af429968d8aa78d329a42ed7ba3feab
+  StripeUICore: 08c1efbd7e3c54ee7fa74334a37a1d4c08ba944d
   twitter_login: 2794db69b7640681171b17b3c2c84ad9dfb4a57f
 
 PODFILE CHECKSUM: f6158cdb5ca5c12e3745690b88c5ecbd88198791

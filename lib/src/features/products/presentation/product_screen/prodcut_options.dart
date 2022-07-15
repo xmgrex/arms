@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../constants/constants.dart';
 import '../../domain/product.dart';
 
-class ProductOptions extends ConsumerWidget {
+class ProductOptions extends StatelessWidget {
   const ProductOptions({
     Key? key,
     required this.product,
@@ -15,7 +15,7 @@ class ProductOptions extends ConsumerWidget {
   final Product product;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Column(
       children: [
         colorDots(),

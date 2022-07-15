@@ -81,5 +81,9 @@
   "deliveryFee": "Delivery fee",
   "placeOrder": "Place order",
   "defaultStr": "Default",
-  "setDefault": "Set as default card"
+  "setDefault": "Set as default card",
+  "inStock": "In stock",
+  "noStock": "No stock",
+  "checkOurInventoryOfOtherCars": "Check our inventory of other cars"
+
 }

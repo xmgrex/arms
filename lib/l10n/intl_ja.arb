@@ -81,5 +81,8 @@
   "deliveryFee": "送料",
   "placeOrder": "注文を確定する",
   "defaultStr": "デフォルト",
-  "setDefault": "デフォルトのカードに設定"
+  "setDefault": "デフォルトのカードに設定",
+  "inStock": "在庫あり",
+  "noStock": "在庫なし",
+  "checkOurInventoryOfOtherCars": "他の車の在庫を確認する"
 }

@@ -1,9 +1,8 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:arms/src/features/supplier/data/supplier_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../generated/l10n.dart';
-import '../service/firebase/firestore.dart';
+import 'package:geoflutterfire/geoflutterfire.dart';
+import '../service/shared_prefs_manager.dart';
 import 'authentication/domain/app_user.dart';
 import 'authentication/presentation/account/app_user_notifier.dart';
 
@@ -17,5 +16,8 @@ final appUserStateProvider = StateNotifierProvider<AppUserNotifier, AppUser?>(
   (ref) => AppUserNotifier(ref.read),
 );
 
-final themeModeProvider = StateProvider<bool>((_) => false);
+final nearbySuppliers = FutureProvider((ref) async {
+  return ref.watch(supplierRepositoryProvider).fetchSuppliersList();
+});
 
+final themeModeProvider = StateProvider<bool>((_) => false);

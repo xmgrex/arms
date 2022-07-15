@@ -3,6 +3,7 @@ import 'package:arms/src/features/products/domain/size_option.dart';
 import 'package:faker/faker.dart';
 import '../features/products/domain/color_option.dart';
 import '../features/products/domain/sku.dart';
+import '../features/supplier/domain/supplier.dart';
 
 final faker = Faker();
 
@@ -10,16 +11,6 @@ const discountRate10 = Discount(rate: 10);
 const discountRate20 = Discount(rate: 20);
 const discountAbs200 = Discount(amount: 200, type: DiscountType.absolute);
 const discountNone = Discount(type: DiscountType.none);
-
-const options = [
-  {
-    'colors': colorOptionValues,
-  },
-  {
-    'size': sizeOptionValues,
-  },
-  // ProductOption(id: 'Color', type: OptionType.color, values: colorOptionValues),
-];
 
 const sizeOptionValues = [
   SizeOption(size: 'S', value: 'S'),
@@ -32,7 +23,7 @@ const colorOptionValues = [
   ColorOption(color: 'Black', colorCode: '212121'),
   ColorOption(color: 'Blue', colorCode: '9fc9ff'),
   ColorOption(color: 'White', colorCode: 'FFFFFF'),
-  ColorOption(color: 'Red', colorCode: 'F6625E'),
+  ColorOption(color: 'Grey', colorCode: '848484'),
 ];
 
 SKU createSKU(
@@ -64,3 +55,24 @@ SKU createSKU(
     size: sizeOption,
   );
 }
+
+final kSuppliers = <Supplier>[
+  Supplier(
+    id: '1',
+    name: '１号',
+    lat: 34.757914,
+    lng: 135.380521,
+  ),
+  Supplier(
+    id: '2',
+    name: '２号',
+    lat: 34.764095,
+    lng: 135.369516,
+  ),
+  Supplier(
+    id: '3',
+    name: '３号',
+    lat: 34.759544,
+    lng: 135.368594,
+  ),
+];

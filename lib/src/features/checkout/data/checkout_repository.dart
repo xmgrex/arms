@@ -1,5 +1,5 @@
 import 'package:arms/src/features/order/domain/order.dart';
-import 'package:arms/src/service/shered_prefs_manager.dart';
+import 'package:arms/src/service/shared_prefs_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../service/firebase/firestore.dart';

@@ -26,7 +26,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  flutter_lints: ^2.0.1
+  flutter_lints: ^1.0.0
 
   x_kit:
     git:
@@ -105,6 +105,9 @@ dependencies:
   firebase_messaging: ^11.4.2
   #https://pub.dev/packages/cloud_functions
   cloud_functions: ^3.2.17
+  #https://pub.dev/packages/geoflutterfire
+  geoflutterfire:
+    git: https://github.com/DarshanGowda0/GeoFlutterFire
   #https://pub.dev/packages/flutter_local_notifications
   flutter_local_notifications: ^9.6.1
 
@@ -133,6 +136,7 @@ dependencies:
 
   #https://pub.dev/packages/dotted_line
   dotted_line: ^3.1.0
+
 
 
 

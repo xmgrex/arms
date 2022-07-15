@@ -88,6 +88,7 @@ class OrderItem {
 class Order {
   const Order({
     required this.id,
+    required this.driverId,
     required this.deliveryOptions,
     required this.paymentSummary,
     required this.customerId,
@@ -116,9 +117,9 @@ class Order {
 
     return Order(
       id: map['id'] as String,
+      driverId: map['driverId'] as String,
       deliveryOptions: deliveryOptions,
-      paymentSummary: paymentSummary
-         ,
+      paymentSummary: paymentSummary,
       customerId: map['customerId'] as String,
       deliveryStatus: map['deliveryStatus'] as String,
       currency: map['currency'] as String,
@@ -140,7 +141,8 @@ class Order {
     final orderItems = cartItems.map((e) => OrderItem.fromCartItem(e)).toList();
 
     return Order(
-      id: const Uuid().v4(),
+      id: '',
+      driverId: '',
       deliveryOptions: deliveryOptions,
       paymentSummary: paymentSummary,
       customerId: '',
@@ -157,6 +159,7 @@ class Order {
   }
 
   final String id;
+  final String driverId;
   final DeliveryOptions deliveryOptions;
   final PaymentSummary paymentSummary;
 
@@ -187,6 +190,7 @@ class Order {
 
   Order copyWith({
     String? id,
+    String? driverId,
     DeliveryOptions? deliveryOptions,
     PaymentSummary? paymentSummary,
     String? customerId,
@@ -202,6 +206,7 @@ class Order {
   }) {
     return Order(
       id: id ?? this.id,
+      driverId: driverId ?? this.driverId,
       deliveryOptions: deliveryOptions ?? this.deliveryOptions,
       paymentSummary: paymentSummary ?? this.paymentSummary,
       customerId: customerId ?? this.customerId,
@@ -225,6 +230,7 @@ class Order {
 
     return {
       'id': id,
+      'driverId': driverId,
       'deliveryOptions': deliveryOptions.toMap(),
       'paymentSummary': paymentSummary.toMap(),
       'customerId': customerId,

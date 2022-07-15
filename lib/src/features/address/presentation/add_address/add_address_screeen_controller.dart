@@ -1,7 +1,7 @@
 import 'package:arms/src/features/address/data/address_repository.dart';
 import 'package:arms/src/features/authentication/domain/app_user.dart';
 import 'package:arms/src/features/top_level_providers.dart';
-import 'package:arms/src/service/shered_prefs_manager.dart';
+import 'package:arms/src/service/shared_prefs_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:x_kit/x_kit.dart';
