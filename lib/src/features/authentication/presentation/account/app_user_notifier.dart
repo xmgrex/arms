@@ -8,16 +8,15 @@ import '../../../top_level_providers.dart';
 
 class AppUserNotifier extends StateNotifier<AppUser?> {
   AppUserNotifier(this._read) : super(null) {
-    _auth.userChanges().listen((firebaseUser) {
+    _read(authProvider).userChanges().listen((firebaseUser) {
       _read(authRepositoryProvider)
           .watchCurrentUser(firebaseUser!.uid)
           .listen((user) {
-            logger.config(user.toString());
+            logger.config('######## ${user.toString()} ##########');
         state = user;
       });
     });
   }
 
-  final _auth = FirebaseAuth.instance;
   final Reader _read;
 }

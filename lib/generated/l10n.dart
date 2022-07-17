@@ -889,6 +889,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Inventory Status`
+  String get inventoryStatus {
+    return Intl.message(
+      'Inventory Status',
+      name: 'inventoryStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search by other cars`
+  String get searchByOtherCars {
+    return Intl.message(
+      'Search by other cars',
+      name: 'searchByOtherCars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car list`
+  String get carList {
+    return Intl.message(
+      'Car list',
+      name: 'carList',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

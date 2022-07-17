@@ -84,6 +84,9 @@
   "setDefault": "Set as default card",
   "inStock": "In stock",
   "noStock": "No stock",
-  "checkOurInventoryOfOtherCars": "Check our inventory of other cars"
+  "checkOurInventoryOfOtherCars": "Check our inventory of other cars",
+  "inventoryStatus": "Inventory Status",
+  "searchByOtherCars": "Search by other cars",
+  "carList": "Car list"
 
 }

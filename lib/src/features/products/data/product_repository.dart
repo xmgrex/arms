@@ -53,7 +53,7 @@ class FakeProductsRepository {
     } else if (productId == 'Compression inner long sleeves') {
       return Future.value(_innerSKUs);
     } else {
-      return Future.value(_shirtSKUs);
+      return Future.error('Error');
     }
   }
 

@@ -18,7 +18,10 @@ class SizeDots extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productScreenControllerProvider);
+    final selectSize = ref.watch(
+        productScreenControllerProvider.select((state) => state.selectSize));
+    final filteredSKUs = ref.watch(
+        productScreenControllerProvider.select((state) => state.filteredSKUs));
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: getProportionateScreenHeight(8),
@@ -29,13 +32,25 @@ class SizeDots extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('${S.of(context).size}: ${state.selectSize!.size}', style: TextStyles.body,),
+            Text.rich(
+              TextSpan(
+                text: '${S.of(context).size} ：  ',
+                style: TextStyles.body.bold,
+                children: [
+                  TextSpan(
+                    text: selectSize?.size,
+                    style: TextStyles.body,
+                  ),
+                ],
+              ),
+            ),
+            gapH8,
             Wrap(
               children: [
                 ...List.generate(options.length, (index) {
                   final option = options[index];
                   bool isAvailable = false;
-                  for (final sku in state.filteredSKUs) {
+                  for (final sku in filteredSKUs) {
                     if (sku.size == option) {
                       if (sku.inventory > 0) {
                         isAvailable = true;
@@ -47,7 +62,7 @@ class SizeDots extends ConsumerWidget {
                   }
                   return SizeDot(
                     size: option.value,
-                    isSelected: state.selectSize == option,
+                    isSelected: selectSize == option,
                     isAvailable: isAvailable,
                     onTap: () {
                       final notifier =

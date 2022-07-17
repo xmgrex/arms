@@ -8,7 +8,10 @@ import 'package:arms/src/features/checkout/presentation/checkout_screen.dart';
 import 'package:arms/src/features/entrypoint/presentation/entrypoint_ui.dart';
 import 'package:arms/src/features/payment/presentation/add_credit_card/add_credit_card_screen.dart';
 import 'package:arms/src/features/products/domain/product.dart';
+import 'package:arms/src/features/products/domain/sku.dart';
 import 'package:arms/src/features/products/presentation/product_screen/product_screen.dart';
+import 'package:arms/src/features/supplier/domain/supplier.dart';
+import 'package:arms/src/features/supplier/presentation/supplier_list/near_by_suppliers_list_screen.dart';
 import 'package:arms/src/features/top_level_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,6 +40,7 @@ enum AppRoute {
   editDisplayNameScreen,
   editEmailScreen,
   editPasswordScreen,
+  nearBySupplierListScreen,
 }
 
 final goRouterProvider = Provider<GoRouter>((ref) {
@@ -71,16 +75,33 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const EntryPointUI(),
         routes: [
           GoRoute(
-            path: 'productScreen',
-            name: AppRoute.productScreen.name,
-            pageBuilder: (context, state) {
-              final product = state.extra! as Product;
-              return MaterialPage(
-                key: state.pageKey,
-                child: ProductScreen(product: product),
-              );
-            },
-          ),
+              path: 'productScreen',
+              name: AppRoute.productScreen.name,
+              pageBuilder: (context, state) {
+                final product = state.extra! as Product;
+                return MaterialPage(
+                  key: state.pageKey,
+                  child: ProductScreen(product: product),
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: 'nearBySupplierListScreen',
+                  name: AppRoute.nearBySupplierListScreen.name,
+                  pageBuilder: (context, state) {
+                    final argus = state.extra as Map<String, dynamic>;
+                    final suppliers = argus['suppliers'] as List<Supplier>;
+                    final sku = argus['sku'] as SKU;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: NearBySuppliersListScreen(
+                        suppliersList: suppliers,
+                        sku: sku,
+                      ),
+                    );
+                  },
+                ),
+              ]),
           GoRoute(
             path: 'checkoutScreen',
             name: AppRoute.checkoutScreen.name,
@@ -103,36 +124,35 @@ final goRouterProvider = Provider<GoRouter>((ref) {
             },
           ),
           GoRoute(
-            path: 'paymentMethodsScreen',
-            name: AppRoute.paymentMethodsScreen.name,
-            pageBuilder: (context, state) {
-              return MaterialPage(
-                key: state.pageKey,
-                child: const PaymentMethodsScreen(),
-              );
-            },
-            routes: [
-              GoRoute(
-                path: 'addCreditCardScreen',
-                name: AppRoute.addCreditCardScreen.name,
-                pageBuilder: (context, state) {
-                  return MaterialPage(
-                    key: state.pageKey,
-                    child: const AddCreditCardScreen(),
-                  );
-                },
-              ),
-            ]
-          ),
+              path: 'paymentMethodsScreen',
+              name: AppRoute.paymentMethodsScreen.name,
+              pageBuilder: (context, state) {
+                return MaterialPage(
+                  key: state.pageKey,
+                  child: const PaymentMethodsScreen(),
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: 'addCreditCardScreen',
+                  name: AppRoute.addCreditCardScreen.name,
+                  pageBuilder: (context, state) {
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: const AddCreditCardScreen(),
+                    );
+                  },
+                ),
+              ]),
           GoRoute(
-            path: 'chooseAddressScreen',
-            name: AppRoute.chooseAddressScreen.name,
-            pageBuilder: (context, state) {
-              return MaterialPage(
-                key: state.pageKey,
-                child: const ChooseAddressScreen(),
-              );
-            },
+              path: 'chooseAddressScreen',
+              name: AppRoute.chooseAddressScreen.name,
+              pageBuilder: (context, state) {
+                return MaterialPage(
+                  key: state.pageKey,
+                  child: const ChooseAddressScreen(),
+                );
+              },
               routes: [
                 GoRoute(
                   path: 'addAddressScreen',
@@ -155,50 +175,48 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                     );
                   },
                 ),
-              ]
-          ),
+              ]),
           GoRoute(
-            path: 'accountInfoScreen',
-            name: AppRoute.accountInfoScreen.name,
-            pageBuilder: (context, state) {
-              return MaterialPage(
-                key: state.pageKey,
-                child: const AccountInfoScreen(),
-              );
-            },
-            routes: [
-              GoRoute(
-                path: 'editDisplayNameScreen',
-                name: AppRoute.editDisplayNameScreen.name,
-                pageBuilder: (context, state) {
-                  return MaterialPage(
-                    key: state.pageKey,
-                    child: const EditDisplayNameScreen(),
-                  );
-                },
-              ),
-              GoRoute(
-                path: 'editEmailScreen',
-                name: AppRoute.editEmailScreen.name,
-                pageBuilder: (context, state) {
-                  return MaterialPage(
-                    key: state.pageKey,
-                    child: const EditEmailScreen(),
-                  );
-                },
-              ),
-              GoRoute(
-                path: 'editPasswordScreen',
-                name: AppRoute.editPasswordScreen.name,
-                pageBuilder: (context, state) {
-                  return MaterialPage(
-                    key: state.pageKey,
-                    child: const EditPasswordScreen(),
-                  );
-                },
-              ),
-            ]
-          ),
+              path: 'accountInfoScreen',
+              name: AppRoute.accountInfoScreen.name,
+              pageBuilder: (context, state) {
+                return MaterialPage(
+                  key: state.pageKey,
+                  child: const AccountInfoScreen(),
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: 'editDisplayNameScreen',
+                  name: AppRoute.editDisplayNameScreen.name,
+                  pageBuilder: (context, state) {
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: const EditDisplayNameScreen(),
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: 'editEmailScreen',
+                  name: AppRoute.editEmailScreen.name,
+                  pageBuilder: (context, state) {
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: const EditEmailScreen(),
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: 'editPasswordScreen',
+                  name: AppRoute.editPasswordScreen.name,
+                  pageBuilder: (context, state) {
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: const EditPasswordScreen(),
+                    );
+                  },
+                ),
+              ]),
         ],
       ),
     ],

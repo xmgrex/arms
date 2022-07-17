@@ -19,45 +19,57 @@ class ColorDots extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productScreenControllerProvider);
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: getProportionateScreenHeight(4),
-        horizontal: getProportionateScreenWidth(16),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '${S.of(context).color}: ${state.selectColor!.color}',
-            style: TextStyles.body,
-          ),
-          SizedBox(
-            width: double.infinity,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ...List.generate(options.length, (index) {
-                    final option = options[index];
-                    return ColorDot(
-                      valueName: option.color,
-                      color: option.colorCode.toColor,
-                      isSelected: state.selectColor == option,
-                      onTap: () {
-                        final notifier =
-                            ref.read(productScreenControllerProvider.notifier);
-                        notifier.selectColor(option);
-                      },
-                    );
-                  }),
-                ],
-              ),
+    final selectColor = ref.watch(
+        productScreenControllerProvider.select((state) => state.selectColor));
+    return selectColor == null
+        ? gap0
+        : Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: getProportionateScreenHeight(4),
+              horizontal: getProportionateScreenWidth(16),
             ),
-          ),
-        ],
-      ),
-    );
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text.rich(
+                  TextSpan(
+                    text: '${S.of(context).color} ：  ',
+                    style: TextStyles.body.bold,
+                    children: [
+                      TextSpan(
+                        text: selectColor.color,
+                        style: TextStyles.body,
+                      ),
+                    ],
+                  ),
+                ),
+                gapH8,
+                SizedBox(
+                  width: double.infinity,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ...List.generate(options.length, (index) {
+                          final option = options[index];
+                          return ColorDot(
+                            valueName: option.color,
+                            color: option.colorCode.toColor,
+                            isSelected: selectColor == option,
+                            onTap: () {
+                              final notifier = ref.read(
+                                  productScreenControllerProvider.notifier);
+                              notifier.selectColor(option);
+                            },
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
   }
 }
 

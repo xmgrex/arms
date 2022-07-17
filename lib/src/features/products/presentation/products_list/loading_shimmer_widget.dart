@@ -14,9 +14,9 @@ class LoadingShimmerWidget extends StatelessWidget {
     return SizedBox(
       height: 144,
       child: Shimmer.fromColors(
-        period: const Duration(milliseconds: 800),
-        highlightColor: colorScheme.primary,
-        baseColor: colorScheme.primaryContainer,
+        period: const Duration(milliseconds: 1200),
+        highlightColor: colorScheme.outline.withOpacity(.3),
+        baseColor: colorScheme.onBackground.withOpacity(.1),
         child: LiveList(
           scrollDirection: Axis.horizontal,
           itemCount: 10,

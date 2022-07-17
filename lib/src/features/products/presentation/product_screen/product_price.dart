@@ -16,9 +16,8 @@ class ProductPrice extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
-    final state = ref.watch(productScreenControllerProvider);
-    final isNull = state.selectSKU == null;
-    final isDiscount = state.selectSKU?.discount.type != DiscountType.none;
+    final selectSKU = ref.watch(productScreenControllerProvider.select((state) => state.selectSKU));
+    final isNull = selectSKU == null;
     return isNull
         ? Container()
         : Padding(
@@ -26,9 +25,9 @@ class ProductPrice extends ConsumerWidget {
               vertical: getProportionateScreenHeight(8),
               horizontal: getProportionateScreenWidth(16),
             ),
-            child: isDiscount
-                ? discountPrice(state.selectSKU!, colorScheme, context)
-                : price(state.selectSKU!, context),
+            child: selectSKU.discount.type != DiscountType.none
+                ? discountPrice(selectSKU, colorScheme, context)
+                : price(selectSKU, context),
           );
   }
 

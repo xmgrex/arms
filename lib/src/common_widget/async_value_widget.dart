@@ -21,7 +21,6 @@ class AsyncValueWidget<T> extends StatelessWidget {
     return value.when(
       data: data,
       error: error ?? (e, st) {
-        logger.warning(e.toString());
         return Center(child: ErrorMessageWidget(e.toString()));
       },
       loading: loading ?? () => const LoadingWidget(),

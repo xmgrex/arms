@@ -23,17 +23,24 @@ class ProductScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Future(() => ref
+    //     .watch(productScreenControllerProvider.notifier)
+    //     .fetchSuppliersListAndSKUsList(product.id));
     return Scaffold(
       appBar: AppBar(
         title: Text(product.name, style: TextStyles.title.bold),
         leading: backPageButton(context: context),
       ),
-      body: AsyncValueWidget(
-        value: ref.watch(fetchSuppliersAndSKUsProvider(product.id)),
-        data: (_) => FadeIn(
-          duration: kThemeAnimationDuration,
-          child: _Body(product: product),
-        ),
+      body: Consumer(
+        builder: (context, ref, _) {
+          final init = ref.watch(fetchSuppliersAndSKUsProvider(product.id));
+          return AsyncValueWidget(value: init, data: (_) {
+            return FadeIn(
+                  duration: kThemeAnimationDuration,
+                  child: _Body(product: product),
+                );
+          });
+        },
       ),
     );
   }
@@ -46,7 +53,6 @@ class _Body extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productScreenControllerProvider);
     return ListView(
       shrinkWrap: true,
       children: [
@@ -55,18 +61,28 @@ class _Body extends ConsumerWidget {
         gapH16,
         ProductOptions(product: product),
         const ProductPrice(),
-        state.selectSKU != null && state.selectSKU!.inventory > 0
-            ? AddToCartWidget(
-                addToCart: (quantity) {
-                  final controller =
-                      ref.read(productScreenControllerProvider.notifier);
-                  return controller.addToCart(quantity, product);
-                },
-              )
-            : gap0,
-        SelectSupplierWidget(),
+        _addToCartWidget(),
+        gapH8,
+        const Divider(thickness: 4, height: 16),
+        const SelectSupplierWidget(),
         gapH64,
       ],
     );
+  }
+
+  Widget _addToCartWidget() {
+    return Consumer(builder: (c, ref, _) {
+      final selectSKU = ref.watch(
+          productScreenControllerProvider.select((state) => state.selectSKU));
+      return selectSKU != null && selectSKU.inventory > 0
+          ? AddToCartWidget(
+              addToCart: (quantity) {
+                final controller =
+                    ref.read(productScreenControllerProvider.notifier);
+                return controller.addToCart(quantity, product);
+              },
+            )
+          : gap0;
+    });
   }
 }

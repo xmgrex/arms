@@ -16,28 +16,31 @@ class ProductImages extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productScreenControllerProvider);
-
+    final selectSKU = ref.watch(
+        productScreenControllerProvider.select((state) => state.selectSKU));
     return Container(
       color: SystemColors.grey0,
       height: 320,
-      child: state.selectSKU == null || state.selectSKU!.imageUrls.isEmpty
+      child: selectSKU == null || selectSKU.imageUrls.isEmpty
           ? const Center(child: Text('No Image'))
-          : Swiper(
-              containerHeight: 280,
-              itemCount: state.selectSKU!.imageUrls.length,
-              itemBuilder: (_, int i) {
-                return state.selectSKU!.imageUrls[i].contains('http')
-                    ? ImageFromUrl(
-                        imageUrl: state.selectSKU!.imageUrls[i],
-                        fit: BoxFit.fitHeight,
-                      )
-                    : Image.asset(state.selectSKU!.imageUrls[i],
-                        fit: BoxFit.cover);
-              },
-              viewportFraction: 1,
-              scale: 1,
-              pagination: const SwiperPagination(),
+          : Card(
+              margin: EdgeInsets.zero,
+              elevation: .4,
+              child: Swiper(
+                containerHeight: 280,
+                itemCount: selectSKU.imageUrls.length,
+                itemBuilder: (_, int i) {
+                  return selectSKU.imageUrls[i].contains('http')
+                      ? ImageFromUrl(
+                          imageUrl: selectSKU.imageUrls[i],
+                          fit: BoxFit.fitHeight,
+                        )
+                      : Image.asset(selectSKU.imageUrls[i], fit: BoxFit.cover);
+                },
+                viewportFraction: 1,
+                scale: 1,
+                pagination: const SwiperPagination(),
+              ),
             ),
     );
   }

@@ -13,23 +13,22 @@ class ProductNameAndDescription extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(productScreenControllerProvider);
+    final selectSKU = ref.watch(productScreenControllerProvider.select((state) => state.selectSKU));
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: SizedBox(
-        // height: getProportionateScreenHeight(160),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              state.selectSKU == null ? '' : state.selectSKU!.name,
+              selectSKU == null ? '' : selectSKU.name,
               style: TextStyles.title.bold,
             ),
             gapH8,
             SizedBox(
               height: Sizes.p48,
               child: Text(
-                state.selectSKU == null ? '' : state.selectSKU!.description,
+                selectSKU == null ? '' : selectSKU.description,
                 style: TextStyles.label,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,

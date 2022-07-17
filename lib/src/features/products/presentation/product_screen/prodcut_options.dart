@@ -2,6 +2,7 @@ import 'package:arms/src/features/products/presentation/product_screen/component
 import 'package:arms/src/features/products/presentation/product_screen/components/size_dots.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:x_kit/x_kit.dart';
 
 import '../../../../constants/constants.dart';
 import '../../domain/product.dart';
@@ -19,6 +20,7 @@ class ProductOptions extends StatelessWidget {
     return Column(
       children: [
         colorDots(),
+        gapH16,
         sizeDots(),
       ],
     );

@@ -84,5 +84,9 @@
   "setDefault": "デフォルトのカードに設定",
   "inStock": "在庫あり",
   "noStock": "在庫なし",
-  "checkOurInventoryOfOtherCars": "他の車の在庫を確認する"
+  "checkOurInventoryOfOtherCars": "他の車の在庫を確認する",
+  "inventoryStatus": "在庫状況",
+  "searchByOtherCars": "他の車で探す",
+  "carList": "車一覧"
+
 }

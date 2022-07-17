@@ -3,11 +3,10 @@ import 'package:arms/src/features/cart/domain/cart.dart';
 import 'package:arms/src/features/products/data/product_repository.dart';
 import 'package:arms/src/features/products/domain/color_option.dart';
 import 'package:arms/src/features/products/domain/size_option.dart';
-import 'package:arms/src/features/top_level_providers.dart';
 import 'package:arms/src/features/products/presentation/product_screen/product_screen_state.dart';
+import 'package:arms/src/features/top_level_providers.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geoflutterfire/geoflutterfire.dart';
 import 'package:x_kit/x_kit.dart';
 
 import '../../../supplier/data/supplier_repository.dart';
@@ -34,36 +33,47 @@ class ProductScreenController extends StateNotifier<ProductScreenState> {
   final Reader _read;
 
   Future<void> fetchSuppliersListAndSKUsList(String productId) async {
+    final user = _read(appUserStateProvider);
+    if (user == null || user.addresses.isEmpty) {
+      return Future.error('Userがnull もしくは、住所が登録されていません.');
+    }
+
+    final supplierRepository = _read(supplierRepositoryProvider);
+    final productRepository = _read(productsRepositoryProvider);
+    state = state.copyWith(value: const AsyncValue.loading());
     var suppliersList = <Supplier>[];
     var skusList = <SKU>[];
-
-    state = state.copyWith(value: const AsyncValue.loading());
-    final result = await AsyncValue.guard(() async {
-      suppliersList =
-          await _read(supplierRepositoryProvider).fetchSuppliersList();
-      skusList = await _read(productsRepositoryProvider).fetchSKUsList(
-        suppliersList.first.id,
-        productId,
-      );
+    await supplierRepository.fetchSuppliersList().then((value) async {
+      suppliersList = value;
+      await productRepository
+          .fetchSKUsList(suppliersList.first.id, productId)
+          .then((value) {
+        skusList = value;
+      }).catchError((error) {
+        return error;
+      });
+    }).catchError((error) {
+      return error;
     });
-    // setSKUsList(skusList);
-    final sku = skusList.firstWhere(
-          (e) => e.inventory > 0,
+
+    final _sku = skusList.firstWhere(
+      (e) => e.inventory > 0,
       orElse: () => skusList.first,
     );
     final filteredSKUs = <SKU>[];
     for (final sku in skusList) {
-      if (sku.color == state.selectColor) {
+      if (sku.color == _sku.color) {
         filteredSKUs.add(sku);
       }
     }
 
-    state = state..copyWith(
-      selectSKU: sku,
-      selectColor: sku.color,
-      selectSize: sku.size,
+    state = state.copyWith(
+      value: const AsyncValue.data(null),
+      selectSKU: _sku,
+      selectColor: _sku.color,
+      selectSize: _sku.size,
+      skusList: skusList,
       filteredSKUs: filteredSKUs,
-      value: result,
       suppliers: suppliersList,
       selectSupplier: suppliersList.first,
     );
@@ -76,7 +86,6 @@ class ProductScreenController extends StateNotifier<ProductScreenState> {
         break;
       }
     }
-    logger.finest(state.selectSKU);
   }
 
   void filteringSKUsList() {

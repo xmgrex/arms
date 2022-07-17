@@ -38,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addresses": MessageLookupByLibrary.simpleMessage("Addresses"),
         "administrativeArea":
             MessageLookupByLibrary.simpleMessage("Administrative area"),
+        "carList": MessageLookupByLibrary.simpleMessage("Car list"),
         "cart": MessageLookupByLibrary.simpleMessage("Cart"),
         "cartIsEmpty": MessageLookupByLibrary.simpleMessage("Cart is empty."),
         "checkOurInventoryOfOtherCars": MessageLookupByLibrary.simpleMessage(
@@ -81,6 +82,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "inStock": MessageLookupByLibrary.simpleMessage("In stock"),
         "inputKeywords": MessageLookupByLibrary.simpleMessage("Input keywords"),
+        "inventoryStatus":
+            MessageLookupByLibrary.simpleMessage("Inventory Status"),
         "line1": MessageLookupByLibrary.simpleMessage(
             "Building name/Company Name(optional)"),
         "line2": MessageLookupByLibrary.simpleMessage("Room number(optional)"),
@@ -122,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "postalCodeFromValidator":
             MessageLookupByLibrary.simpleMessage("Please enter postal code."),
         "quantity": MessageLookupByLibrary.simpleMessage("Quantity"),
+        "searchByOtherCars":
+            MessageLookupByLibrary.simpleMessage("Search by other cars"),
         "searchProducts":
             MessageLookupByLibrary.simpleMessage("Search products"),
         "seeMore": MessageLookupByLibrary.simpleMessage("See More"),

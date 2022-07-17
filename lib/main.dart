@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:arms/src/features/top_level_providers.dart';
 import 'package:arms/src/service/firebase/firebase_massaging.dart';
 import 'package:arms/src/utils/.env.stripe_key.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,6 +25,8 @@ void main() async {
   FlutterFireUIAuth.configureProviders(Constants.providerConfigs);
 
   final container = ProviderContainer();
+  container.read(authProvider);
+  container.read(appUserStateProvider);
   final notification = container.read(notificationServiceProvider);
   await notification.init();
   notification.backgroundMessaging();

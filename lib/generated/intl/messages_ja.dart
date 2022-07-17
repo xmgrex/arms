@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addToCart": MessageLookupByLibrary.simpleMessage("カートに入れる"),
         "addresses": MessageLookupByLibrary.simpleMessage("アドレス帳"),
         "administrativeArea": MessageLookupByLibrary.simpleMessage("都道府県"),
+        "carList": MessageLookupByLibrary.simpleMessage("車一覧"),
         "cart": MessageLookupByLibrary.simpleMessage("カート"),
         "cartIsEmpty": MessageLookupByLibrary.simpleMessage("カートが空です。"),
         "checkOurInventoryOfOtherCars":
@@ -68,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("ホーム"),
         "inStock": MessageLookupByLibrary.simpleMessage("在庫あり"),
         "inputKeywords": MessageLookupByLibrary.simpleMessage("キーワードを入力"),
+        "inventoryStatus": MessageLookupByLibrary.simpleMessage("在庫状況"),
         "line1": MessageLookupByLibrary.simpleMessage("建物名/会社名(任意)"),
         "line2": MessageLookupByLibrary.simpleMessage("部屋番号(任意)"),
         "locality": MessageLookupByLibrary.simpleMessage("市区郡町村"),
@@ -105,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "postalCodeFromValidator":
             MessageLookupByLibrary.simpleMessage("郵便番号を入力してください。"),
         "quantity": MessageLookupByLibrary.simpleMessage("数量"),
+        "searchByOtherCars": MessageLookupByLibrary.simpleMessage("他の車で探す"),
         "searchProducts": MessageLookupByLibrary.simpleMessage("商品を検索"),
         "seeMore": MessageLookupByLibrary.simpleMessage("もっと見る"),
         "setDefault": MessageLookupByLibrary.simpleMessage("デフォルトのカードに設定"),
